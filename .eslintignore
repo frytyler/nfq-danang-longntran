@@ -2,3 +2,5 @@ build/*
 scripts/*
 public/*
 config/*
+src/utils/*
+src/registerServiceWorker.js
