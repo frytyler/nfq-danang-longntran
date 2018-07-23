@@ -4,7 +4,7 @@ const selectUsers = state => state.get('users');
 
 const usersSelector = () => createSelector(
   selectUsers,
-  usersState => usersState.get('users'),
+  usersState => usersState,
 );
 
 export {
