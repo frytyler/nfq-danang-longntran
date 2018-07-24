@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import UsersView from './UsersView';
+import JobsView from './JobsView';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
@@ -11,22 +11,22 @@ import injectSaga from '../../utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
 import { usersSelector } from './selectors';
-import { fetchUsers } from './actions';
+import { fetchJobs } from './actions';
 
-class UsersContainer extends React.PureComponent {
+class JobsContainer extends React.PureComponent {
   componentDidMount() {
-    this.props.dispatchFetchUsers();
+    this.props.dispatchFetchJobs();
   }
 
   render() {
     return (
-      <UsersView />
+      <JobsView />
     );
   }
 }
 
-UsersContainer.propTypes = {
-  dispatchFetchUsers: PropTypes.func.isRequired,
+JobsContainer.propTypes = {
+  dispatchFetchJobs: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -34,7 +34,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchFetchUsers: () => dispatch(fetchUsers()),
+  dispatchFetchJobs: () => dispatch(fetchJobs()),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
@@ -46,4 +46,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(UsersContainer);
+)(JobsContainer);

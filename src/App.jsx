@@ -10,7 +10,7 @@ import { Grid, Row } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/home';
-import UsersContainer from './pages/users/UsersContainer';
+import UsersContainer from './pages/jobs/JobsContainer';
 
 import configureStore from './configureStore';
 
@@ -26,7 +26,7 @@ function App() {
           <Grid>
             <Row>
               <Switch>
-                <Route exact path="/users" component={UsersContainer} />
+                <Route exact path="/jobs" component={UsersContainer} />
                 <Route exact path="/" component={Home} />
                 <Redirect to="/" />
               </Switch>
