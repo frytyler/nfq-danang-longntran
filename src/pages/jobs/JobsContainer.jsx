@@ -11,9 +11,17 @@ import { fetchJobs } from './actions';
 import JobsView from './JobsView';
 import reducer from './reducer';
 import saga from './saga';
+import { jobsSelector } from './selectors';
 
 /* eslint-disable react/prefer-stateless-function */
 export class JobsContainer extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      show: false,
+    };
+  }
+
   componentDidMount() {
     this.props.dispatchFetchJobs();
     console.log(this.props.jobs);
@@ -21,7 +29,9 @@ export class JobsContainer extends React.PureComponent {
 
   render() {
     return (
-      <JobsView />
+      <JobsView
+        show={this.state.show}
+      />
     );
   }
 }
@@ -43,7 +53,7 @@ export function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  jobs: () => ([]),
+  jobs: jobsSelector(),
 });
 
 const withConnect = connect(

@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-const selectUsers = state => state.get('jobs');
+const selectJobs = state => state.get('jobs');
 
-const usersSelector = () => createSelector(
-  selectUsers,
-  usersState => usersState,
+const jobsSelector = () => createSelector(
+  selectJobs,
+  state => state.get('jobs'),
 );
 
 export {
-  selectUsers,
-  usersSelector,
+  selectJobs,
+  jobsSelector,
 };

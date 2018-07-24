@@ -6,22 +6,13 @@ import jobRef from './../../firebase.config';
 
 export function* fetchJobsWorker() {
   try {
-    // const repos = yield call(request, requestURL);
-    // const username = "nhulongctk10";
-    // yield put(fetchJobsSuccessfully(repos, username));
-
-    const resp = yield call(jobRef.on('value', (data) => {
-      console.log(data);
+    yield call(jobRef.on('value', (data) => {
     }));
-    console.log(resp);
   } catch (err) {
     yield put(fetchJobsError(err));
   }
 }
 
-/**
- * Root saga manages watcher lifecycle
- */
 export default function* githubData() {
   yield takeLatest(FETCH_JOBS, fetchJobsWorker);
 }
