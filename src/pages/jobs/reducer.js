@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { FETCH_JOBS } from './constants';
+import { FETCH_JOBS_SUCCESSFULLY } from './constants';
 
 const initialState = fromJS({
   jobs: false,
@@ -8,7 +8,7 @@ const initialState = fromJS({
 
 function jobsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_JOBS:
+    case FETCH_JOBS_SUCCESSFULLY:
       return state.set('jobs', action.payload);
     default:
       return state;

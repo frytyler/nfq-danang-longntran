@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
+import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import createReducer from './reducers';
 
@@ -24,13 +24,14 @@ export default function configureStore(initialState = {}, history) {
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Prevent recomputing reducers for `replaceReducer`
         shouldHotReload: false,
       })
       : compose;
   /* eslint-enable */
 
   const store = createStore(
-    connectRouter(history)(createReducer),
+    createReducer(),
     fromJS(initialState),
     composeEnhancers(...enhancers),
   );
