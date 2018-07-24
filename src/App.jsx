@@ -2,8 +2,8 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
 
@@ -14,7 +14,7 @@ import UsersContainer from './pages/users/UsersContainer';
 
 import configureStore from './configureStore';
 
-const history = createHistory();
+const history = createBrowserHistory();
 const store = configureStore({}, history);
 
 function App() {
