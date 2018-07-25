@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Header = () => (
   <header>
@@ -13,12 +14,12 @@ const Header = () => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav pullRight>
-          <NavItem eventKey={1} href="/jobs">
-            <span>Jobs</span>
-          </NavItem>
-          <NavItem eventKey={2} href="/about">
-            <span>About</span>
-          </NavItem>
+          <LinkContainer to="/jobs">
+            <NavItem eventKey={1}>Jobs</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/about">
+            <NavItem eventKey={2}>About</NavItem>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
