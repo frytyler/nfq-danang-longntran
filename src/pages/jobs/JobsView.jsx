@@ -20,7 +20,6 @@ class JobsView extends React.PureComponent {
 
   handleCreateJob = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
   }
 
   render() {
@@ -53,15 +52,15 @@ class JobsView extends React.PureComponent {
             <form id="jobForm" onSubmit={this.handleCreateJob}>
               <FormGroup controlId="title">
                 <ControlLabel>Title</ControlLabel>
-                <FormControl componentClass="input" placeholder="Job title" />
+                <FormControl inputRef={(ref) => { this.jobTitleRef = ref; }} componentClass="input" placeholder="Job title" />
               </FormGroup>
               <FormGroup controlId="desc">
                 <ControlLabel>Description</ControlLabel>
-                <FormControl componentClass="textarea" placeholder="Job description" />
+                <FormControl inputRef={(ref) => { this.jobDescRef = ref; }} componentClass="textarea" placeholder="Job description" />
               </FormGroup>
               <FormGroup>
                 <ControlLabel>Media</ControlLabel>
-                <FormControl componentClass="input" placeholder="Media Url" />
+                <FormControl inputRef={(ref) => { this.jobMediaRef = ref; }} componentClass="input" placeholder="Media Url" />
               </FormGroup>
             </form>
           </Modal.Body>
