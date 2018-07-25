@@ -1,29 +1,41 @@
 import React from 'react';
 import { Grid, Row, Col, Panel, Button,
-  ButtonToolbar, Modal, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+  ButtonToolbar, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
+/* eslint no-confusing-arrow: 0 */
 class JobsView extends React.PureComponent {
   constructor() {
     super();
     this.state = {
       showModal: false,
+      title: '',
+      desc: '',
+      isValidTitle: false,
     };
-  }
-
-  handleCloseModal = () => {
-    this.setState(() => ({ showModal: false }));
   }
 
   handleOpenModal = () => {
     this.setState(() => ({ showModal: true }));
   }
 
-  handleCreateJob = (e) => {
+  handleSubmitJob = (e) => {
     e.preventDefault();
+    if (this.state.title.length <= 0) {
+      this.setState({ isValidTitle: false });
+    }
+  }
+
+  handleCloseModal = () => {
+    this.setState(() => ({ showModal: false }));
+  }
+
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   render() {
-    console.log(this.state.showModal);
     return (
       <Grid>
         <Row className="show-grid">
@@ -49,18 +61,42 @@ class JobsView extends React.PureComponent {
             <Modal.Title>Create new job</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form id="jobForm" onSubmit={this.handleCreateJob}>
-              <FormGroup controlId="title">
+            <form id="jobForm" onSubmit={this.handleSubmitJob}>
+              <FormGroup controlId="title" validationState={() => this.state.isValidTitle ? null : 'error'}>
                 <ControlLabel>Title</ControlLabel>
-                <FormControl inputRef={(ref) => { this.jobTitleRef = ref; }} componentClass="input" placeholder="Job title" />
+                <FormControl
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                  componentClass="input"
+                  placeholder="Job title"
+                  onChange={this.handleInputChange}
+                />
+                <FormControl.Feedback />
               </FormGroup>
               <FormGroup controlId="desc">
                 <ControlLabel>Description</ControlLabel>
-                <FormControl inputRef={(ref) => { this.jobDescRef = ref; }} componentClass="textarea" placeholder="Job description" />
+                <FormControl
+                  type="text"
+                  name="desc"
+                  value={this.state.desc}
+                  componentClass="textarea"
+                  placeholder="Job description"
+                  onChange={this.handleInputChange}
+                />
+                <FormControl.Feedback />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Media</ControlLabel>
-                <FormControl inputRef={(ref) => { this.jobMediaRef = ref; }} componentClass="input" placeholder="Media Url" />
+                <ControlLabel>Preview</ControlLabel>
+                <FormControl
+                  type="file"
+                  name="mediaUrl"
+                  inputRef={(ref) => { this.jobMediaRef = ref; }}
+                  accept="audio/*,video/*,image/*"
+                  componentClass="input"
+                  placeholder="Media type"
+                />
+                <FormControl.Feedback />
               </FormGroup>
             </form>
           </Modal.Body>
