@@ -28,7 +28,7 @@ export class JobsContainer extends React.PureComponent {
   }
 
   onSaveJob = (job) => {
-    this.props.dispatchSaveJobs(job);
+    this.props.dispatchSaveJob(job);
   }
 
   render() {
@@ -44,19 +44,19 @@ export class JobsContainer extends React.PureComponent {
 JobsContainer.propTypes = {
   jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   dispatchFetchJobs: PropTypes.func,
-  dispatchSaveJobs: PropTypes.func,
+  dispatchSaveJob: PropTypes.func,
 };
 
 JobsContainer.defaultProps = {
   jobs: false,
   dispatchFetchJobs: () => {},
-  dispatchSaveJobs: () => {},
+  dispatchSaveJob: () => {},
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
     dispatchFetchJobs: () => dispatch(fetchJobs()),
-    dispatchSaveJobs: job => dispatch(saveJob(job)),
+    dispatchSaveJob: job => dispatch(saveJob(job)),
   };
 }
 

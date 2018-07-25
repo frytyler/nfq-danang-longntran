@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col, Panel, Button,
-  ButtonToolbar, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+  ButtonToolbar, Modal, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 /* eslint no-confusing-arrow: 0 */
 class JobsView extends React.PureComponent {
@@ -11,6 +11,7 @@ class JobsView extends React.PureComponent {
       showModal: false,
       title: '',
       desc: '',
+      isValidTitle: false,
     };
   }
 
@@ -20,11 +21,10 @@ class JobsView extends React.PureComponent {
 
   handleSubmitJob = (e) => {
     e.preventDefault();
-    const job = {
-      title: this.state.title,
-      desc: this.state.desc,
-    };
-
+    if (this.state.title.length <= 0) {
+      this.setState({ isValidTitle: false });
+    }
+    const job = { title: this.state.title, desc: this.state.desc };
     this.props.onSubmit(job);
   }
 
@@ -65,7 +65,7 @@ class JobsView extends React.PureComponent {
           </Modal.Header>
           <Modal.Body>
             <form id="jobForm" onSubmit={this.handleSubmitJob}>
-              <FormGroup controlId="title">
+              <FormGroup controlId="title" validationState={() => this.state.isValidTitle ? null : 'error'}>
                 <ControlLabel>Title</ControlLabel>
                 <FormControl
                   type="text"
@@ -79,15 +79,7 @@ class JobsView extends React.PureComponent {
               </FormGroup>
               <FormGroup controlId="desc">
                 <ControlLabel>Description</ControlLabel>
-                <FormControl
-                  type="text"
-                  name="desc"
-                  value={this.state.desc}
-                  componentClass="textarea"
-                  placeholder="Job description"
-                  onChange={this.handleInputChange}
-                />
-                <FormControl.Feedback />
+                <FormControl inputRef={(ref) => { this.jobDescRef = ref; }} componentClass="textarea" placeholder="Job description" />
               </FormGroup>
               <FormGroup>
                 <ControlLabel>Preview</ControlLabel>
