@@ -3,5 +3,6 @@ scripts/*
 public/*
 config/*
 src/utils/*
+src/firebase/*
 src/registerServiceWorker.js
 .idea/*

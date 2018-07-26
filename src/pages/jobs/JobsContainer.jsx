@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
 
-import { fetchJobs } from './actions';
+import { fetchJobs, saveJob } from './actions';
 import JobsView from './JobsView';
 import reducer from './reducer';
 import saga from './saga';
@@ -27,10 +27,15 @@ export class JobsContainer extends React.PureComponent {
     console.log(this.props.jobs);
   }
 
+  onSaveJob = (job) => {
+    this.props.dispatchSaveJobs(job);
+  }
+
   render() {
     return (
       <JobsView
         show={this.state.show}
+        onSubmit={this.onSaveJob}
       />
     );
   }
@@ -39,16 +44,19 @@ export class JobsContainer extends React.PureComponent {
 JobsContainer.propTypes = {
   jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   dispatchFetchJobs: PropTypes.func,
+  dispatchSaveJobs: PropTypes.func,
 };
 
 JobsContainer.defaultProps = {
   jobs: false,
   dispatchFetchJobs: () => {},
+  dispatchSaveJobs: () => {},
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
     dispatchFetchJobs: () => dispatch(fetchJobs()),
+    dispatchSaveJobs: job => dispatch(saveJob(job)),
   };
 }
 

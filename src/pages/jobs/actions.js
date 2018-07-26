@@ -1,4 +1,4 @@
-import { FETCH_JOBS, FETCH_JOBS_ERROR, FETCH_JOBS_SUCCESSFULLY } from './constants';
+import { FETCH_JOBS, FETCH_JOBS_ERROR, FETCH_JOBS_SUCCESSFULLY, SAVE_JOB } from './constants';
 
 function fetchJobs() {
   return {
@@ -20,8 +20,16 @@ function fetchJobsError(error) {
   };
 }
 
+function saveJob(job) {
+  return {
+    type: SAVE_JOB,
+    payload: job,
+  };
+}
+
 export {
   fetchJobs,
   fetchJobsSuccessfully,
   fetchJobsError,
+  saveJob,
 };

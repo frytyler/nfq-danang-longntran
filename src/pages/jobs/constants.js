@@ -1,3 +1,5 @@
 export const FETCH_JOBS = 'FETCH_JOBS';
 export const FETCH_JOBS_SUCCESSFULLY = 'FETCH_JOBS_SUCCESSFULLY';
 export const FETCH_JOBS_ERROR = 'FETCH_JOBS_ERROR';
+
+export const SAVE_JOB = 'SAVE_JOB';

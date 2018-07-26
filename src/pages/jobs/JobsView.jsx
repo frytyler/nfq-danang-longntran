@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Row, Col, Panel, Button,
   ButtonToolbar, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
@@ -10,7 +11,6 @@ class JobsView extends React.PureComponent {
       showModal: false,
       title: '',
       desc: '',
-      isValidTitle: false,
     };
   }
 
@@ -20,9 +20,12 @@ class JobsView extends React.PureComponent {
 
   handleSubmitJob = (e) => {
     e.preventDefault();
-    if (this.state.title.length <= 0) {
-      this.setState({ isValidTitle: false });
-    }
+    const job = {
+      title: this.state.title,
+      desc: this.state.desc,
+    };
+
+    this.props.onSubmit(job);
   }
 
   handleCloseModal = () => {
@@ -62,7 +65,7 @@ class JobsView extends React.PureComponent {
           </Modal.Header>
           <Modal.Body>
             <form id="jobForm" onSubmit={this.handleSubmitJob}>
-              <FormGroup controlId="title" validationState={() => this.state.isValidTitle ? null : 'error'}>
+              <FormGroup controlId="title">
                 <ControlLabel>Title</ControlLabel>
                 <FormControl
                   type="text"
@@ -113,6 +116,7 @@ class JobsView extends React.PureComponent {
 }
 
 JobsView.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 JobsView.defaultProps = {
