@@ -24,7 +24,6 @@ export class JobsContainer extends React.PureComponent {
 
   componentDidMount() {
     this.props.dispatchFetchJobs();
-    console.log(this.props.jobs);
   }
 
   onSaveJob = (job) => {
@@ -36,6 +35,7 @@ export class JobsContainer extends React.PureComponent {
       <JobsView
         show={this.state.show}
         onSubmit={this.onSaveJob}
+        jobs={this.props.jobs}
       />
     );
   }

@@ -7,10 +7,9 @@ class JobService {
     return this.fbService.push(task);
   }
 
-  subscribe(cb) {
-    this.fbService.once('value', (snapshot) => {
+  subscribe() {
+    this.fbService.subscribe((snapshot) => {
       console.log(snapshot);
-      cb(snapshot);
     });
   }
 }

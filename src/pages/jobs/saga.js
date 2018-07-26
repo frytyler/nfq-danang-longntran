@@ -1,17 +1,27 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
+import { firebaseDb } from '../../firebase';
 import jobService from '../../services';
 
 import { FETCH_JOBS, SAVE_JOB } from './constants';
-import { fetchJobsError } from './actions';
+import { fetchJobsError, fetchJobsSuccessfully } from './actions';
 
-function subscribe() {
-  return eventChannel(emit => jobService.subscribe(emit));
+/* eslint no-confusing-arrow: 0 */
+function fetchJob() {
+  return new Promise((resolve, reject) => {
+    firebaseDb.ref('jobs')
+      .on('value', snapshot => snapshot ? resolve(snapshot) : reject());
+  });
 }
 
 export function* fetchJobsWorker() {
   try {
-    yield call(subscribe);
+    const jobsSnapshot = yield fetchJob();
+    const jobs = [];
+    jobsSnapshot.forEach((jobSnap) => {
+      const job = jobSnap.val();
+      jobs.push(job);
+    });
+    yield put(fetchJobsSuccessfully(jobs));
   } catch (err) {
     yield put(fetchJobsError(err));
   }

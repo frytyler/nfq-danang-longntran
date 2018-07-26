@@ -13,10 +13,10 @@ function fetchJobs() {
   };
 }
 
-function fetchJobsSuccessfully(users) {
+function fetchJobsSuccessfully(jobs) {
   return {
     type: FETCH_JOBS_SUCCESSFULLY,
-    payload: users,
+    payload: jobs,
   };
 }
 

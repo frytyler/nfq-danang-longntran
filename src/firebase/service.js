@@ -27,6 +27,17 @@ class FirebaseService {
         .update(value, error => (error ? reject(error) : resolve()));
     });
   }
+
+  subscribe(cb) {
+    let ref = firebaseDb.ref(POST_PATH);
+
+    ref.once('value', (payload) => {
+      cb(payload);
+    });
+
+    return () => ref.off();
+  }
+
 }
 
 export default FirebaseService;
