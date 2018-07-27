@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col, Panel, Button,
-  ButtonToolbar, Modal, FormGroup, ControlLabel,
-  FormControl, Pagination } from 'react-bootstrap';
+  ButtonToolbar, Pagination } from 'react-bootstrap';
 import JobList from './components/JobList';
 
 import './job.css';
+import JobModal from './job/CreateModal';
 
 /* eslint no-confusing-arrow: 0 */
 class JobsView extends React.PureComponent {
@@ -13,19 +13,16 @@ class JobsView extends React.PureComponent {
     super();
     this.state = {
       showModal: false,
-      title: '',
-      desc: '',
     };
+  }
+
+  onCreateNewJob = (job) => {
+    this.props.onSubmit(job);
+    this.handleCloseModal();
   }
 
   handleOpenModal = () => {
     this.setState(() => ({ showModal: true }));
-  }
-
-  handleSubmitJob = (e) => {
-    e.preventDefault();
-    const job = { title: this.state.title, desc: this.state.desc };
-    this.props.onSubmit(job);
   }
 
   handleCloseModal = () => {
@@ -83,50 +80,13 @@ class JobsView extends React.PureComponent {
               </Row>
             </Panel.Footer>
           </Panel>
+          <JobModal
+            active={this.state.showModal}
+            onSubmit={this.onCreateNewJob}
+            handleCloseModal={this.handleCloseModal}
+            job={{}}
+          />
         </Row>
-        <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Create new job</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form id="jobForm" onSubmit={this.handleSubmitJob}>
-              <FormGroup controlId="title">
-                <ControlLabel>Title</ControlLabel>
-                <FormControl
-                  type="text"
-                  name="title"
-                  value={this.state.title}
-                  componentClass="input"
-                  placeholder="Job title"
-                  onChange={this.handleInputChange}
-                />
-                <FormControl.Feedback />
-              </FormGroup>
-              <FormGroup controlId="desc">
-                <ControlLabel>Description</ControlLabel>
-                <FormControl inputRef={(ref) => { this.jobDescRef = ref; }} componentClass="textarea" placeholder="Job description" />
-              </FormGroup>
-              <FormGroup>
-                <ControlLabel>Preview</ControlLabel>
-                <FormControl
-                  type="file"
-                  name="mediaUrl"
-                  inputRef={(ref) => { this.jobMediaRef = ref; }}
-                  accept="audio/*,video/*,image/*"
-                  componentClass="input"
-                  placeholder="Media type"
-                />
-                <FormControl.Feedback />
-              </FormGroup>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <ButtonToolbar className="pull-right">
-              <Button form="jobForm" className="btn-primary" key="submit" type="submit">Create</Button>
-              <Button onClick={this.handleCloseModal}>Close</Button>
-            </ButtonToolbar>
-          </Modal.Footer>
-        </Modal>
       </Grid>
     );
   }
