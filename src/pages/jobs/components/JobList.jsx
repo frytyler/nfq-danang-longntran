@@ -5,13 +5,13 @@ import { Table } from 'react-bootstrap';
 import JobItem from './JobItem';
 
 const JobList = ({ removeJob, jobs, updateJob }) => {
-  const jobsView = jobs.map((job, key) => (/* eslint react/no-array-index-key: 0 */
+  const jobsView = jobs.map((job, key) => (
     <JobItem
       index={key + 1}
-      removeTask={removeJob}
-      key={key}
+      key={job.key}
       job={job}
-      updateTask={updateJob}
+      onDelete={removeJob}
+      onUpdate={updateJob}
     />
   ));
 
@@ -24,7 +24,7 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
           <th>Description</th>
           <th>Created date</th>
           <th>Preview</th>
-          <th>Download</th>
+          <th>#</th>
         </tr>
       </thead>
       <tbody>
@@ -35,9 +35,14 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
 };
 
 JobList.propTypes = {
-  removeJob: PropTypes.func.isRequired,
   jobs: PropTypes.instanceOf(Array).isRequired,
-  updateJob: PropTypes.func.isRequired,
+  removeJob: PropTypes.func,
+  updateJob: PropTypes.func,
+};
+
+JobList.defaultProps = {
+  removeJob: () => ({}),
+  updateJob: () => ({}),
 };
 
 export default JobList;

@@ -2,7 +2,7 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 import { firebaseDb } from '../../firebase';
 import jobService from '../../services';
 
-import { FETCH_JOBS, SAVE_JOB } from './constants';
+import { FETCH_JOBS, REMOVE_JOB, SAVE_JOB } from './constants';
 import { fetchJobsError, fetchJobsSuccessfully } from './actions';
 
 /* eslint no-confusing-arrow: 0 */
@@ -19,6 +19,7 @@ export function* fetchJobsWorker() {
     const jobs = [];
     jobsSnapshot.forEach((jobSnap) => {
       const job = jobSnap.val();
+      job.key = jobSnap.key;
       jobs.push(job);
     });
     yield put(fetchJobsSuccessfully(jobs));
@@ -27,9 +28,17 @@ export function* fetchJobsWorker() {
   }
 }
 
-export function* saveJobsWorker({ payload }) {
+export function* saveJobWorker({ payload }) {
   try {
-    yield call(jobService.addTask(payload));
+    yield call(jobService.addJob(payload));
+  } catch (err) {
+    yield put(fetchJobsError(err));
+  }
+}
+
+export function* removeJobWorker({ payload }) {
+  try {
+    yield call(jobService.removeJob(payload.key));
   } catch (err) {
     yield put(fetchJobsError(err));
   }
@@ -37,5 +46,6 @@ export function* saveJobsWorker({ payload }) {
 
 export default function* githubData() {
   yield takeLatest(FETCH_JOBS, fetchJobsWorker);
-  yield takeLatest(SAVE_JOB, saveJobsWorker);
+  yield takeLatest(SAVE_JOB, saveJobWorker);
+  yield takeLatest(REMOVE_JOB, removeJobWorker);
 }

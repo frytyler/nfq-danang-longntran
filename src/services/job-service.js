@@ -3,8 +3,13 @@ class JobService {
     this.fbService = firebaseService;
   }
 
-  addTask(task) {
-    return this.fbService.push(task);
+  addJob(job) {
+    return this.fbService.push(job);
+  }
+
+  removeJob(key) {
+    console.log('remove', key);
+    return this.fbService.remove(key);
   }
 
   subscribe() {

@@ -5,6 +5,9 @@ import {
   SAVE_JOB,
   SAVE_JOB_ERROR,
   SAVE_JOB_SUCCESSFULLY,
+  REMOVE_JOB,
+  REMOVE_JOB_SUCCESSFULLY,
+  REMOVE_JOB_ERROR,
 } from './constants';
 
 function fetchJobs() {
@@ -47,6 +50,27 @@ function saveJobFailed(error) {
   };
 }
 
+
+function removeJob(job) {
+  return {
+    type: REMOVE_JOB,
+    payload: job,
+  };
+}
+
+function removeJobSuccessfully() {
+  return {
+    type: REMOVE_JOB_SUCCESSFULLY,
+  };
+}
+
+function removeJobFailed(error) {
+  return {
+    type: REMOVE_JOB_ERROR,
+    payload: error,
+  };
+}
+
 export {
   fetchJobs,
   fetchJobsSuccessfully,
@@ -54,4 +78,7 @@ export {
   saveJob,
   saveJobSuccessfully,
   saveJobFailed,
+  removeJob,
+  removeJobSuccessfully,
+  removeJobFailed,
 };

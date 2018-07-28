@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Panel, Button,
-  ButtonToolbar, Pagination } from 'react-bootstrap';
-import JobList from './components/JobList';
+import { Grid, Row, Col, Panel, Pagination } from 'react-bootstrap';
 
 import './job.css';
+
+import JobAction from './components/JobActions';
+import JobList from './components/JobList';
 import JobModal from './job/CreateModal';
 
 /* eslint no-confusing-arrow: 0 */
@@ -36,10 +37,9 @@ class JobsView extends React.PureComponent {
   }
 
   renderPaginationView = () => {
-    const active = 2;
     const items = [];
     for (let number = 1; number <= 10; number += 1) {
-      items.push(<Pagination.Item active={number === active}>{number}</Pagination.Item>);
+      items.push(<Pagination.Item key={number} active={false}>{number}</Pagination.Item>);
     }
     return items;
   }
@@ -50,21 +50,11 @@ class JobsView extends React.PureComponent {
         <Row className="show-grid">
           <Panel>
             <Panel.Heading>
-              <Row className="show-grid">
-                <Col xs={6} md={8} className="vcenter">
-                  <h3 className="panel-title">Jobs</h3>
-                </Col>
-                <Col xs={6} md={4} className="text-right vcenter">
-                  <ButtonToolbar className="pull-right">
-                    <Button bsStyle="primary" className="mr-1" onClick={this.handleOpenModal}>Create a job</Button>
-                    <Button bsStyle="primary">Export CSV</Button>
-                  </ButtonToolbar>
-                </Col>
-              </Row>
+              <JobAction onOpenModal={this.handleOpenModal} />
             </Panel.Heading>
             <Panel.Body>
               <JobList
-                removeJob={() => {}}
+                removeJob={this.props.handleRemoveJob}
                 jobs={this.props.jobs || []}
                 updateJob={() => {}}
               />
@@ -95,9 +85,11 @@ class JobsView extends React.PureComponent {
 JobsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]).isRequired,
+  handleRemoveJob: PropTypes.func,
 };
 
 JobsView.defaultProps = {
+  handleRemoveJob: () => ({}),
 };
 
 export default JobsView;

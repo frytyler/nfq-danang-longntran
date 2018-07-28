@@ -6,7 +6,6 @@ import { Button,
   FormControl, HelpBlock } from 'react-bootstrap';
 import { withFormik } from 'formik';
 
-/* eslint no-confusing-arrow: 0 */
 class JobModal extends React.PureComponent {
   render() {
     const {
@@ -16,6 +15,7 @@ class JobModal extends React.PureComponent {
       handleSubmit,
       touched,
       errors,
+      setFieldValue,
     } = this.props;
 
     return (
@@ -38,7 +38,7 @@ class JobModal extends React.PureComponent {
               />
               {touched.title && errors.title && <HelpBlock>{errors.title}</HelpBlock>}
             </FormGroup>
-            <FormGroup controlId="desc" validationState={touched.desc && errors.desc ? 'error' : null}>
+            <FormGroup controlId="desc">
               <ControlLabel>Description</ControlLabel>
               <FormControl
                 name="desc"
@@ -48,19 +48,20 @@ class JobModal extends React.PureComponent {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.desc && errors.desc && <HelpBlock>{errors.desc}</HelpBlock>}
             </FormGroup>
-            <FormGroup>
+            <FormGroup controlId="mediaFile" validationState={errors.mediaFile ? 'error' : null}>
               <ControlLabel>Preview</ControlLabel>
               <FormControl
                 type="file"
-                name="mediaUrl"
-                inputRef={(ref) => { this.jobMediaRef = ref; }}
+                name="mediaFile"
+                onChange={(event) => {
+                  setFieldValue("mediaFile", event.currentTarget.files[0]);
+                }}
                 accept="audio/*,video/*,image/*"
                 componentClass="input"
-                placeholder="Media type"
+                placeholder="Media file"
               />
-              <FormControl.Feedback />
+              {errors.mediaFile && <HelpBlock>{errors.mediaFile}</HelpBlock>}
             </FormGroup>
           </form>
         </Modal.Body>
@@ -82,7 +83,6 @@ class JobModal extends React.PureComponent {
 
 JobModal.propTypes = {
   active: PropTypes.bool,
-
   job: PropTypes.instanceOf(Object).isRequired,
   values: PropTypes.instanceOf(Object).isRequired,
   handleCloseModal: PropTypes.func,
@@ -99,25 +99,25 @@ JobModal.defaultProps = {
   handleSubmit: () => ({}),
 };
 
-const EnhancedForm = withFormik({
+const JobForm = withFormik({
   mapPropsToValues: () => ({ title: '', desc: '' }),
-  validate: ({ title, desc }) => {
+  validate: ({ title, mediaFile }) => {
     const errors = {};
     if (!title) {
       errors.title = 'Title is required';
     }
 
-    if (!desc) {
-      errors.desc = 'Description is required';
+    if (!mediaFile) {
+      errors.mediaFile = 'Media file is required';
     }
     return errors;
   },
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log(values);
+    values.createdAt = new Date().getTime();
     props.onSubmit(values);
     setSubmitting(false);
   },
-  displayName: 'BasicForm',
+  displayName: 'CreateJobForm',
 })(JobModal);
 
-export default EnhancedForm;
+export default JobForm;

@@ -6,14 +6,13 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
-
-import { fetchJobs, saveJob } from './actions';
-import JobsView from './JobsView';
+import { jobsSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { jobsSelector } from './selectors';
 
-/* eslint-disable react/prefer-stateless-function */
+import { fetchJobs, saveJob, removeJob } from './actions';
+import JobsView from './JobsView';
+
 export class JobsContainer extends React.PureComponent {
   constructor() {
     super();
@@ -30,12 +29,17 @@ export class JobsContainer extends React.PureComponent {
     this.props.dispatchSaveJob(job);
   }
 
+  onRemoveJob = (job) => {
+    this.props.dispatchRemoveJob(job);
+  }
+
   render() {
     return (
       <JobsView
         show={this.state.show}
         onSubmit={this.onSaveJob}
         jobs={this.props.jobs}
+        handleRemoveJob={this.onRemoveJob}
       />
     );
   }
@@ -43,20 +47,20 @@ export class JobsContainer extends React.PureComponent {
 
 JobsContainer.propTypes = {
   jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  dispatchFetchJobs: PropTypes.func,
-  dispatchSaveJob: PropTypes.func,
+  dispatchFetchJobs: PropTypes.func.isRequired,
+  dispatchSaveJob: PropTypes.func.isRequired,
+  dispatchRemoveJob: PropTypes.func.isRequired,
 };
 
 JobsContainer.defaultProps = {
   jobs: false,
-  dispatchFetchJobs: () => {},
-  dispatchSaveJob: () => {},
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
     dispatchFetchJobs: () => dispatch(fetchJobs()),
     dispatchSaveJob: job => dispatch(saveJob(job)),
+    dispatchRemoveJob: job => dispatch(removeJob(job)),
   };
 }
 
