@@ -35,7 +35,7 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
 };
 
 JobList.propTypes = {
-  jobs: PropTypes.instanceOf(Array).isRequired,
+  jobs: PropTypes.instanceOf(Object).isRequired,
   removeJob: PropTypes.func,
   updateJob: PropTypes.func,
 };

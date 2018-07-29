@@ -3,37 +3,49 @@ import PropTypes from 'prop-types';
 import { Grid, Row, Col, Panel, Pagination } from 'react-bootstrap';
 
 import './job.css';
-
 import JobAction from './components/JobActions';
 import JobList from './components/JobList';
-import JobModal from './job/CreateModal';
+import JobModal from './JobModal';
 
-/* eslint no-confusing-arrow: 0 */
+const emptyJob = {
+  title: '',
+  desc: '',
+  mediaFile: '',
+};
+
 class JobsView extends React.PureComponent {
   constructor() {
     super();
     this.state = {
       showModal: false,
+      job: emptyJob,
     };
   }
 
-  onCreateNewJob = (job) => {
+  onSaveJob = (job) => {
     this.props.onSubmit(job);
     this.handleCloseModal();
   }
 
   handleOpenModal = () => {
-    this.setState(() => ({ showModal: true }));
+    this.setState(() => ({ showModal: true, job: emptyJob }));
   }
 
   handleCloseModal = () => {
-    this.setState(() => ({ showModal: false }));
+    this.setState(() => ({ showModal: false, job: emptyJob }));
   }
 
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  handleUpdateJob = (job) => {
+    this.setState(() => ({
+      job,
+      showModal: true,
+    }));
   }
 
   renderPaginationView = () => {
@@ -56,7 +68,7 @@ class JobsView extends React.PureComponent {
               <JobList
                 removeJob={this.props.handleRemoveJob}
                 jobs={this.props.jobs || []}
-                updateJob={() => {}}
+                updateJob={this.handleUpdateJob}
               />
             </Panel.Body>
             <Panel.Footer>
@@ -72,9 +84,9 @@ class JobsView extends React.PureComponent {
           </Panel>
           <JobModal
             active={this.state.showModal}
-            onSubmit={this.onCreateNewJob}
+            onSubmit={this.onSaveJob}
             handleCloseModal={this.handleCloseModal}
-            job={{}}
+            job={this.state.job}
           />
         </Row>
       </Grid>
@@ -84,7 +96,7 @@ class JobsView extends React.PureComponent {
 
 JobsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]).isRequired,
+  jobs: PropTypes.instanceOf(Object).isRequired,
   handleRemoveJob: PropTypes.func,
 };
 

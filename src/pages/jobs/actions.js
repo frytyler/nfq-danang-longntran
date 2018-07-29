@@ -1,32 +1,17 @@
 import {
-  FETCH_JOBS,
-  FETCH_JOBS_ERROR,
   FETCH_JOBS_SUCCESSFULLY,
   SAVE_JOB,
-  SAVE_JOB_ERROR,
   SAVE_JOB_SUCCESSFULLY,
   REMOVE_JOB,
   REMOVE_JOB_SUCCESSFULLY,
-  REMOVE_JOB_ERROR,
+  UPDATE_JOB,
+  UPDATE_JOB_SUCCESSFULLY,
 } from './constants';
-
-function fetchJobs() {
-  return {
-    type: FETCH_JOBS,
-  };
-}
 
 function fetchJobsSuccessfully(jobs) {
   return {
     type: FETCH_JOBS_SUCCESSFULLY,
     payload: jobs,
-  };
-}
-
-function fetchJobsError(error) {
-  return {
-    type: FETCH_JOBS_ERROR,
-    payload: error,
   };
 }
 
@@ -37,19 +22,26 @@ function saveJob(job) {
   };
 }
 
-function saveJobSuccessfully() {
+function saveJobSuccessfully(job) {
   return {
     type: SAVE_JOB_SUCCESSFULLY,
+    payload: job,
   };
 }
 
-function saveJobFailed(error) {
+function updateJob(job) {
   return {
-    type: SAVE_JOB_ERROR,
-    payload: error,
+    type: UPDATE_JOB,
+    payload: job,
   };
 }
 
+function updateJobSuccessfully(job) {
+  return {
+    type: UPDATE_JOB_SUCCESSFULLY,
+    payload: job,
+  };
+}
 
 function removeJob(job) {
   return {
@@ -58,27 +50,19 @@ function removeJob(job) {
   };
 }
 
-function removeJobSuccessfully() {
+function removeJobSuccessfully(deletedJob) {
   return {
     type: REMOVE_JOB_SUCCESSFULLY,
-  };
-}
-
-function removeJobFailed(error) {
-  return {
-    type: REMOVE_JOB_ERROR,
-    payload: error,
+    payload: deletedJob,
   };
 }
 
 export {
-  fetchJobs,
   fetchJobsSuccessfully,
-  fetchJobsError,
   saveJob,
   saveJobSuccessfully,
-  saveJobFailed,
   removeJob,
   removeJobSuccessfully,
-  removeJobFailed,
+  updateJob,
+  updateJobSuccessfully,
 };

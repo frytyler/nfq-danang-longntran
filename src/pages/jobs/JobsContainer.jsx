@@ -10,7 +10,7 @@ import { jobsSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { fetchJobs, saveJob, removeJob } from './actions';
+import { saveJob, removeJob, updateJob } from './actions';
 import JobsView from './JobsView';
 
 export class JobsContainer extends React.PureComponent {
@@ -21,12 +21,12 @@ export class JobsContainer extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.props.dispatchFetchJobs();
-  }
-
   onSaveJob = (job) => {
-    this.props.dispatchSaveJob(job);
+    if (job.key) {
+      this.props.dispatchUpdateJob(job);
+    } else {
+      this.props.dispatchSaveJob(job);
+    }
   }
 
   onRemoveJob = (job) => {
@@ -46,20 +46,20 @@ export class JobsContainer extends React.PureComponent {
 }
 
 JobsContainer.propTypes = {
-  jobs: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  dispatchFetchJobs: PropTypes.func.isRequired,
+  jobs: PropTypes.instanceOf(Object),
   dispatchSaveJob: PropTypes.func.isRequired,
+  dispatchUpdateJob: PropTypes.func.isRequired,
   dispatchRemoveJob: PropTypes.func.isRequired,
 };
 
 JobsContainer.defaultProps = {
-  jobs: false,
+  jobs: {},
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    dispatchFetchJobs: () => dispatch(fetchJobs()),
     dispatchSaveJob: job => dispatch(saveJob(job)),
+    dispatchUpdateJob: job => dispatch(updateJob(job)),
     dispatchRemoveJob: job => dispatch(removeJob(job)),
   };
 }

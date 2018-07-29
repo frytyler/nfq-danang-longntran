@@ -1,12 +1,22 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button,
-  ButtonToolbar, Modal, FormGroup, ControlLabel,
-  FormControl, HelpBlock } from 'react-bootstrap';
+import { Button, ButtonToolbar, Modal, FormGroup,
+  ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import { withFormik } from 'formik';
 
+import jobValidation from './validation';
+
 class JobModal extends React.PureComponent {
+  isEditing = () => this.props.job && this.props.job.key;
+
+  renderModalTitle = () => {
+    if (this.isEditing()) {
+      return 'Update job';
+    }
+    return 'Create new job';
+  }
+
   render() {
     const {
       handleChange,
@@ -21,7 +31,7 @@ class JobModal extends React.PureComponent {
     return (
       <Modal show={this.props.active} onHide={this.props.handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Create new job</Modal.Title>
+          <Modal.Title>{this.renderModalTitle()}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form id="jobForm" onSubmit={handleSubmit}>
@@ -55,7 +65,7 @@ class JobModal extends React.PureComponent {
                 type="file"
                 name="mediaFile"
                 onChange={(event) => {
-                  setFieldValue("mediaFile", event.currentTarget.files[0]);
+                  setFieldValue('mediaFile', event.currentTarget.files[0]);
                 }}
                 accept="audio/*,video/*,image/*"
                 componentClass="input"
@@ -72,7 +82,8 @@ class JobModal extends React.PureComponent {
               form="jobForm"
               className="btn-primary"
               key="submit"
-              type="submit">Create</Button>
+              type="submit"
+            >{this.isEditing() ? 'Save' : 'Create'}</Button>
             <Button onClick={this.props.handleCloseModal}>Close</Button>
           </ButtonToolbar>
         </Modal.Footer>
@@ -100,21 +111,13 @@ JobModal.defaultProps = {
 };
 
 const JobForm = withFormik({
-  mapPropsToValues: () => ({ title: '', desc: '' }),
-  validate: ({ title, mediaFile }) => {
-    const errors = {};
-    if (!title) {
-      errors.title = 'Title is required';
-    }
-
-    if (!mediaFile) {
-      errors.mediaFile = 'Media file is required';
-    }
-    return errors;
-  },
-  handleSubmit: (values, { props, setSubmitting }) => {
-    values.createdAt = new Date().getTime();
-    props.onSubmit(values);
+  enableReinitialize: true,
+  mapPropsToValues: props => props.job,
+  validate: jobValidation,
+  handleSubmit: (values, { props, setSubmitting, resetForm }) => {
+    const job = Object.assign({}, props.job, values);
+    props.onSubmit(job);
+    resetForm({});
     setSubmitting(false);
   },
   displayName: 'CreateJobForm',

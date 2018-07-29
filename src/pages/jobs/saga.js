@@ -1,51 +1,59 @@
-import { put, call, takeLatest } from 'redux-saga/effects';
-import { firebaseDb } from '../../firebase';
+import { put, call, takeLatest, take, fork } from 'redux-saga/effects';
+
+import { eventChannel } from 'redux-saga';
 import jobService from '../../services';
+import { REMOVE_JOB, SAVE_JOB, UPDATE_JOB } from './constants';
 
-import { FETCH_JOBS, REMOVE_JOB, SAVE_JOB } from './constants';
-import { fetchJobsError, fetchJobsSuccessfully } from './actions';
-
-/* eslint no-confusing-arrow: 0 */
-function fetchJob() {
-  return new Promise((resolve, reject) => {
-    firebaseDb.ref('jobs')
-      .on('value', snapshot => snapshot ? resolve(snapshot) : reject());
-  });
+function subscribe() {
+  return eventChannel(emit => jobService.subscribe(emit));
 }
 
-export function* fetchJobsWorker() {
-  try {
-    const jobsSnapshot = yield fetchJob();
-    const jobs = [];
-    jobsSnapshot.forEach((jobSnap) => {
-      const job = jobSnap.val();
-      job.key = jobSnap.key;
-      jobs.push(job);
-    });
-    yield put(fetchJobsSuccessfully(jobs));
-  } catch (err) {
-    yield put(fetchJobsError(err));
+function* loadJobs() {
+  const channel = yield call(subscribe);
+  while (true) {
+    const action = yield take(channel);
+    yield put(action);
   }
 }
 
 export function* saveJobWorker({ payload }) {
   try {
-    yield call(jobService.addJob(payload));
+    const values = payload;
+    values.createdAt = new Date().getTime();
+    yield call(jobService.push(values));
   } catch (err) {
-    yield put(fetchJobsError(err));
+    // handle error here
+  }
+}
+
+
+export function* updateJobWorker({ payload }) {
+  try {
+    const jobKey = payload.key;
+    const values = {
+      title: payload.title,
+      desc: payload.desc,
+      mediaFile: payload.mediaFile,
+    };
+    yield call(jobService.update(jobKey, values));
+  } catch (err) {
+    // handle error here
   }
 }
 
 export function* removeJobWorker({ payload }) {
   try {
-    yield call(jobService.removeJob(payload.key));
+    yield call(jobService.remove(payload.key));
   } catch (err) {
-    yield put(fetchJobsError(err));
+    // handle error here
   }
 }
 
 export default function* githubData() {
-  yield takeLatest(FETCH_JOBS, fetchJobsWorker);
+  yield [
+    fork(loadJobs),
+  ];
   yield takeLatest(SAVE_JOB, saveJobWorker);
+  yield takeLatest(UPDATE_JOB, updateJobWorker);
   yield takeLatest(REMOVE_JOB, removeJobWorker);
 }

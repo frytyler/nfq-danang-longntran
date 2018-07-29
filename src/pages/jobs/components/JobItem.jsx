@@ -8,7 +8,7 @@ function convertTimeStampToDate(timestamp) {
 
 class JobItem extends React.PureComponent {
   update = () => {
-    this.props.onUpdate(this.props.job);
+    this.props.onUpdate(this.props.job.toJS());
   }
 
   remove = () => {
@@ -32,8 +32,8 @@ class JobItem extends React.PureComponent {
             <Button className="btn btn-primary">
               <Glyphicon glyph="download-alt" />
             </Button>
-            <Button className="btn btn-danger">
-              <Glyphicon glyph="trash" onClick={this.remove} />
+            <Button className="btn btn-danger" onClick={this.remove}>
+              <Glyphicon glyph="trash" />
             </Button>
           </ButtonToolbar>
         </td>
