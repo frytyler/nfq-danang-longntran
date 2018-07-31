@@ -1,4 +1,5 @@
-import { firebaseDb } from './index';
+/* eslint-disable */
+import { firebaseDb, firebaseStorage } from './index';
 
 const POST_PATH = 'jobs';
 
@@ -10,9 +11,6 @@ class FirebaseService {
 
   push(value) {
     return new Promise((resolve, reject) => {
-      /*const file = value.mediaFile;
-      firebaseStorage.ref('images')
-        .push(file);*/
       firebaseDb.ref(POST_PATH)
         .push(value, error => (error ? reject(error) : resolve()));
     });
@@ -30,6 +28,21 @@ class FirebaseService {
       firebaseDb.ref(`${POST_PATH}/${key}`)
         .update(value, error => (error ? reject(error) : resolve()));
     });
+  }
+
+  uploadMedia(file) {
+    return new Promise((resolve, reject) => {
+      const childPath = `/images/${file.name}`;
+      const storageRef = firebaseStorage.ref(childPath);
+      const uploadTask = storageRef.put(file);
+      uploadTask.on('state_changed',
+        () => {},
+        (error) => reject(error),
+        () => {
+          uploadTask.snapshot.ref.getDownloadURL()
+            .then((downloadUrl) => resolve(downloadUrl));
+        });
+    })
   }
 
   subscribe(emit) {

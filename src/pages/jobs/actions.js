@@ -5,7 +5,7 @@ import {
   REMOVE_JOB,
   REMOVE_JOB_SUCCESSFULLY,
   UPDATE_JOB,
-  UPDATE_JOB_SUCCESSFULLY,
+  UPDATE_JOB_SUCCESSFULLY, SEARCH_JOB, SEARCH_JOB_SUCCESSFULLY,
 } from './constants';
 
 function fetchJobsSuccessfully(jobs) {
@@ -57,6 +57,20 @@ function removeJobSuccessfully(deletedJob) {
   };
 }
 
+function searchJob(criteria) {
+  return {
+    type: SEARCH_JOB,
+    payload: criteria,
+  };
+}
+
+function searchJobSuccessfully(criteria) {
+  return {
+    type: SEARCH_JOB_SUCCESSFULLY,
+    payload: criteria,
+  };
+}
+
 export {
   fetchJobsSuccessfully,
   saveJob,
@@ -65,4 +79,6 @@ export {
   removeJobSuccessfully,
   updateJob,
   updateJobSuccessfully,
+  searchJob,
+  searchJobSuccessfully,
 };

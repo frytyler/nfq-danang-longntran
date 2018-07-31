@@ -10,7 +10,7 @@ import { jobsSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { saveJob, removeJob, updateJob } from './actions';
+import { saveJob, removeJob, updateJob, searchJob } from './actions';
 import JobsView from './JobsView';
 
 export class JobsContainer extends React.PureComponent {
@@ -33,6 +33,10 @@ export class JobsContainer extends React.PureComponent {
     this.props.dispatchRemoveJob(job);
   }
 
+  handleSearch = (criteria) => {
+    this.props.dispatchSearchChange(criteria);
+  }
+
   render() {
     return (
       <JobsView
@@ -40,6 +44,7 @@ export class JobsContainer extends React.PureComponent {
         onSubmit={this.onSaveJob}
         jobs={this.props.jobs}
         handleRemoveJob={this.onRemoveJob}
+        onSearch={this.handleSearch}
       />
     );
   }
@@ -50,6 +55,7 @@ JobsContainer.propTypes = {
   dispatchSaveJob: PropTypes.func.isRequired,
   dispatchUpdateJob: PropTypes.func.isRequired,
   dispatchRemoveJob: PropTypes.func.isRequired,
+  dispatchSearchChange: PropTypes.func.isRequired,
 };
 
 JobsContainer.defaultProps = {
@@ -61,6 +67,7 @@ export function mapDispatchToProps(dispatch) {
     dispatchSaveJob: job => dispatch(saveJob(job)),
     dispatchUpdateJob: job => dispatch(updateJob(job)),
     dispatchRemoveJob: job => dispatch(removeJob(job)),
+    dispatchSearchChange: criteria => dispatch(searchJob(criteria)),
   };
 }
 

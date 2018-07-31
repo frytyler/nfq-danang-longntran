@@ -62,7 +62,10 @@ class JobsView extends React.PureComponent {
         <Row className="show-grid">
           <Panel>
             <Panel.Heading>
-              <JobAction onOpenModal={this.handleOpenModal} />
+              <JobAction
+                onOpenModal={this.handleOpenModal}
+                onSearch={this.props.onSearch}
+              />
             </Panel.Heading>
             <Panel.Body>
               <JobList
@@ -98,10 +101,12 @@ JobsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   jobs: PropTypes.instanceOf(Object).isRequired,
   handleRemoveJob: PropTypes.func,
+  onSearch: PropTypes.func,
 };
 
 JobsView.defaultProps = {
   handleRemoveJob: () => ({}),
+  onSearch: () => ({}),
 };
 
 export default JobsView;

@@ -4,6 +4,7 @@ import {
   REMOVE_JOB_SUCCESSFULLY,
   SAVE_JOB_SUCCESSFULLY,
   UPDATE_JOB_SUCCESSFULLY,
+  SEARCH_JOB_SUCCESSFULLY,
 } from './constants';
 
 function jobsReducer(state = JobState(), { type, payload }) {
@@ -19,6 +20,8 @@ function jobsReducer(state = JobState(), { type, payload }) {
     }
     case REMOVE_JOB_SUCCESSFULLY:
       return state.set('jobs', state.jobs.filter(job => (job.key !== payload.key)));
+    case SEARCH_JOB_SUCCESSFULLY:
+      return state.set('criteria', payload);
     default:
       return state;
   }

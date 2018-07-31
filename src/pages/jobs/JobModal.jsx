@@ -56,6 +56,7 @@ class JobModal extends React.PureComponent {
                 componentClass="textarea"
                 placeholder="Job description"
                 onChange={handleChange}
+                rows={10}
                 onBlur={handleBlur}
               />
             </FormGroup>

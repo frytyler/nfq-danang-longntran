@@ -16,7 +16,7 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
   ));
 
   return (
-    <Table>
+    <Table className="table-align--middle" responsive hover>
       <thead>
         <tr>
           <th>#</th>
