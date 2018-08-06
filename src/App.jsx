@@ -8,7 +8,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './pages/home';
 import UsersContainer from './pages/jobs';
 
@@ -32,7 +31,6 @@ function App() {
               </Switch>
             </Row>
           </Grid>
-          <Footer />
         </main>
       </ConnectedRouter>
     </Provider>

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Panel, Pagination } from 'react-bootstrap';
+import { Grid, Row, Panel } from 'react-bootstrap';
 
 import './job.css';
 import JobAction from './components/JobActions';
 import JobList from './components/JobList';
+import Pagination from './components/Pagination';
 import JobModal from './JobModal';
 
 const emptyJob = {
@@ -48,15 +49,8 @@ class JobsView extends React.PureComponent {
     }));
   }
 
-  renderPaginationView = () => {
-    const items = [];
-    for (let number = 1; number <= 10; number += 1) {
-      items.push(<Pagination.Item key={number} active={false}>{number}</Pagination.Item>);
-    }
-    return items;
-  }
-
   render() {
+    const { jobs, onSearch, handleRemoveJob } = this.props;
     return (
       <Grid>
         <Row className="show-grid">
@@ -64,25 +58,18 @@ class JobsView extends React.PureComponent {
             <Panel.Heading>
               <JobAction
                 onOpenModal={this.handleOpenModal}
-                onSearch={this.props.onSearch}
+                onSearch={onSearch}
               />
             </Panel.Heading>
             <Panel.Body>
               <JobList
-                removeJob={this.props.handleRemoveJob}
-                jobs={this.props.jobs || []}
+                removeJob={handleRemoveJob}
+                jobs={jobs || []}
                 updateJob={this.handleUpdateJob}
               />
             </Panel.Body>
             <Panel.Footer>
-              <Row className="show-grid">
-                <Col xs={4} md={4} className="vcenter">
-                  <div>Page 1 of 5</div>
-                </Col>
-                <Col xs={8} md={8} className="vcenter">
-                  <Pagination className="m-0 pull-right" bsSize="medium">{this.renderPaginationView()}</Pagination>
-                </Col>
-              </Row>
+              <Pagination total={jobs.length} />
             </Panel.Footer>
           </Panel>
           <JobModal
