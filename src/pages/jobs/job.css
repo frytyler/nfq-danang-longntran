@@ -8,15 +8,18 @@
   float: none;
 }
 
-.job__thumb {
-  max-width: 100px;
-  max-height: 100px;
-}
-
 .job__thumb > img {
   width: 100%;
 }
 
 .table-align--middle td {
   vertical-align: middle !important;
+}
+
+.w10 {
+  width: 10%;
+}
+
+.w20 {
+  width: 20%;
 }

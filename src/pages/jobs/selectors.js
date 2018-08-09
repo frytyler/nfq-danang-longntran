@@ -1,11 +1,10 @@
 import { createSelector } from 'reselect';
+import { context } from './constants';
 
-const selectJobs = state => state.get('jobs').jobs;
-
-const getCriteria = state => state.get('jobs').criteria;
-
-const jobsSelector = () => createSelector(
-  selectJobs,
+const getJobs = state => state.get(context).jobs;
+const getCriteria = state => state.get(context).criteria;
+const filterSelector = () => createSelector(
+  getJobs,
   getCriteria,
   (jobs, criteria) => {
     if (criteria === '' || criteria.length <= 0) {
@@ -13,13 +12,14 @@ const jobsSelector = () => createSelector(
     }
 
     return jobs.filter((job) => {
-      const { title = '', desc = '' } = job.toJS();
+      const { title = '', desc = '' } = job;
       return title.includes(criteria) || desc.includes(criteria);
     });
   },
 );
 
 export {
-  selectJobs,
-  jobsSelector,
+  getJobs,
+  getCriteria,
+  filterSelector,
 };

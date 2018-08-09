@@ -1,16 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Home extends React.PureComponent {
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <p className="App-intro">
-        #TODO
-      </p>
-    );
-  }
+function Home() {
+  return (
+    <div>
+      <p>Go to jobs page to see lazy load feature</p>
+      <Link to="/jobs">jobs</Link>
+    </div>
+  );
 }
 
 export default Home;

@@ -5,12 +5,11 @@ import { Grid, Row, Panel } from 'react-bootstrap';
 import './job.css';
 import JobAction from './components/JobActions';
 import JobList from './components/JobList';
-import Pagination from './components/Pagination';
 import JobModal from './JobModal';
 
 const emptyJob = {
   title: '',
-  desc: '',
+  description: '',
   mediaFile: '',
 };
 
@@ -50,16 +49,13 @@ class JobsView extends React.PureComponent {
   }
 
   render() {
-    const { jobs, onSearch, handleRemoveJob } = this.props;
+    const { jobs, handleRemoveJob } = this.props;
     return (
       <Grid>
         <Row className="show-grid">
           <Panel>
             <Panel.Heading>
-              <JobAction
-                onOpenModal={this.handleOpenModal}
-                onSearch={onSearch}
-              />
+              <JobAction onOpenModal={this.handleOpenModal} />
             </Panel.Heading>
             <Panel.Body>
               <JobList
@@ -68,9 +64,6 @@ class JobsView extends React.PureComponent {
                 updateJob={this.handleUpdateJob}
               />
             </Panel.Body>
-            <Panel.Footer>
-              <Pagination total={jobs.length} />
-            </Panel.Footer>
           </Panel>
           <JobModal
             active={this.state.showModal}
@@ -88,12 +81,10 @@ JobsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   jobs: PropTypes.instanceOf(Object).isRequired,
   handleRemoveJob: PropTypes.func,
-  onSearch: PropTypes.func,
 };
 
 JobsView.defaultProps = {
-  handleRemoveJob: () => ({}),
-  onSearch: () => ({}),
+  handleRemoveJob: () => {},
 };
 
 export default JobsView;

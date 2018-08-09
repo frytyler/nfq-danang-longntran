@@ -1,40 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, ButtonToolbar, Button, Image } from 'react-bootstrap';
+import { Glyphicon, ButtonToolbar, Button } from 'react-bootstrap';
 
-function convertTimeStampToDate(timestamp) {
-  return new Date(timestamp || new Date().getTime()).toLocaleDateString();
-}
+import convertTimeStampToDate from '../../../utils/dateTimeUtils';
+import PreviewMedia from './PreviewMdia';
 
 class JobItem extends React.PureComponent {
   update = () => {
-    this.props.onUpdate(this.props.job.toJS());
+    this.props.onUpdate(this.props.job);
   }
 
   remove = () => {
     this.props.onDelete(this.props.job);
   }
 
-  renderImage = src => <div className="job__thumb"><Image thumbnail src={src} /></div>;
-
   render() {
-    const { index, job } = this.props;
+    const { job } = this.props;
     return (
       <tr>
-        <td>{index}</td>
         <td>{job.title}</td>
-        <td>{job.desc}</td>
+        <td>{job.description}</td>
         <td>{convertTimeStampToDate(job.createdAt)}</td>
         <td>
-          {this.renderImage(job.mediaFile || null)}
+          <PreviewMedia mediaUrl={job.mediaFile} />
         </td>
-        <td align="center">
+        <td className="w10">
           <ButtonToolbar className="pull-right">
             <Button className="btn btn-default" onClick={this.update}>
               <Glyphicon glyph="pencil" />
-            </Button>
-            <Button className="btn btn-primary">
-              <Glyphicon glyph="download-alt" />
             </Button>
             <Button className="btn btn-danger" onClick={this.remove}>
               <Glyphicon glyph="trash" />
@@ -47,15 +40,12 @@ class JobItem extends React.PureComponent {
 }
 
 JobItem.propTypes = {
-  job: PropTypes.instanceOf(Object),
-  index: PropTypes.number,
+  job: PropTypes.instanceOf(Object).isRequired,
   onDelete: PropTypes.func,
   onUpdate: PropTypes.func,
 };
 
 JobItem.defaultProps = {
-  job: {},
-  index: 0,
   onDelete: () => {},
   onUpdate: () => {},
 };

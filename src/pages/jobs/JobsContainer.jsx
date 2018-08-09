@@ -6,11 +6,11 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
-import { jobsSelector } from './selectors';
+import { filterSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { saveJob, removeJob, updateJob, searchJob } from './actions';
+import { saveJob, removeJob, updateJob } from './actions';
 import JobsView from './JobsView';
 
 export class JobsContainer extends React.PureComponent {
@@ -22,19 +22,12 @@ export class JobsContainer extends React.PureComponent {
   }
 
   onSaveJob = (job) => {
-    if (job.key) {
-      this.props.dispatchUpdateJob(job);
-    } else {
-      this.props.dispatchSaveJob(job);
-    }
+    const { dispatchUpdateJob, dispatchSaveJob } = this.props;
+    return job.key ? dispatchUpdateJob(job) : dispatchSaveJob(job);
   }
 
   onRemoveJob = (job) => {
     this.props.dispatchRemoveJob(job);
-  }
-
-  handleSearch = (criteria) => {
-    this.props.dispatchSearchChange(criteria);
   }
 
   render() {
@@ -44,7 +37,6 @@ export class JobsContainer extends React.PureComponent {
         onSubmit={this.onSaveJob}
         jobs={this.props.jobs}
         handleRemoveJob={this.onRemoveJob}
-        onSearch={this.handleSearch}
       />
     );
   }
@@ -55,24 +47,20 @@ JobsContainer.propTypes = {
   dispatchSaveJob: PropTypes.func.isRequired,
   dispatchUpdateJob: PropTypes.func.isRequired,
   dispatchRemoveJob: PropTypes.func.isRequired,
-  dispatchSearchChange: PropTypes.func.isRequired,
 };
 
 JobsContainer.defaultProps = {
   jobs: {},
 };
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    dispatchSaveJob: job => dispatch(saveJob(job)),
-    dispatchUpdateJob: job => dispatch(updateJob(job)),
-    dispatchRemoveJob: job => dispatch(removeJob(job)),
-    dispatchSearchChange: criteria => dispatch(searchJob(criteria)),
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  dispatchSaveJob: job => dispatch(saveJob(job)),
+  dispatchUpdateJob: job => dispatch(updateJob(job)),
+  dispatchRemoveJob: job => dispatch(removeJob(job)),
+});
 
 const mapStateToProps = createStructuredSelector({
-  jobs: jobsSelector(),
+  jobs: filterSelector(),
 });
 
 const withConnect = connect(

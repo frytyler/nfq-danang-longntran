@@ -4,15 +4,14 @@ import { Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
 
 import SearchForm from './SearchForm';
 
-const JobAction = ({ onOpenModal, onSearch }) => (
+const JobAction = ({ onOpenModal }) => (
   <Row className="show-grid">
-    <Col xs={6} md={4} className="vcenter">
-      <SearchForm onSearch={onSearch} />
+    <Col xs={6} md={6} className="vcenter">
+      <SearchForm />
     </Col>
-    <Col xs={6} md={8} className="text-right vcenter">
+    <Col xs={6} md={6} className="text-right vcenter">
       <ButtonToolbar className="pull-right">
-        <Button bsStyle="primary" className="mr-1" onClick={onOpenModal}>Create a job</Button>
-        <Button bsStyle="primary">Export CSV</Button>
+        <Button bsStyle="primary" className="mr-1" onClick={onOpenModal}>Create new job</Button>
       </ButtonToolbar>
     </Col>
   </Row>
@@ -20,12 +19,10 @@ const JobAction = ({ onOpenModal, onSearch }) => (
 
 JobAction.propTypes = {
   onOpenModal: PropTypes.func,
-  onSearch: PropTypes.func,
 };
 
 JobAction.defaultProps = {
-  onOpenModal: () => ({}),
-  onSearch: () => ({}),
+  onOpenModal: () => {},
 };
 
 export default JobAction;

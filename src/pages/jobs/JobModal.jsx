@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonToolbar, Modal, FormGroup,
@@ -48,11 +47,11 @@ class JobModal extends React.PureComponent {
               />
               {touched.title && errors.title && <HelpBlock>{errors.title}</HelpBlock>}
             </FormGroup>
-            <FormGroup controlId="desc">
+            <FormGroup controlId="description">
               <ControlLabel>Description</ControlLabel>
               <FormControl
-                name="desc"
-                value={values.desc}
+                name="description"
+                value={values.description}
                 componentClass="textarea"
                 placeholder="Job description"
                 onChange={handleChange}
@@ -84,7 +83,9 @@ class JobModal extends React.PureComponent {
               className="btn-primary"
               key="submit"
               type="submit"
-            >{this.isEditing() ? 'Save' : 'Create'}</Button>
+            >
+              {this.isEditing() ? 'Save' : 'Create'}
+            </Button>
             <Button onClick={this.props.handleCloseModal}>Close</Button>
           </ButtonToolbar>
         </Modal.Footer>
@@ -96,22 +97,25 @@ class JobModal extends React.PureComponent {
 JobModal.propTypes = {
   active: PropTypes.bool,
   job: PropTypes.instanceOf(Object).isRequired,
+  /*
+  * Formik props
+  * */
   values: PropTypes.instanceOf(Object).isRequired,
-  handleCloseModal: PropTypes.func,
-  handleChange: PropTypes.func,
-  handleBlur: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  handleCloseModal: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  touched: PropTypes.instanceOf(Object).isRequired,
+  errors: PropTypes.instanceOf(Object).isRequired,
 };
 
 JobModal.defaultProps = {
   active: false,
-  handleCloseModal: () => ({}),
-  handleChange: () => ({}),
-  handleBlur: () => ({}),
-  handleSubmit: () => ({}),
 };
 
-const JobForm = withFormik({
+const enhanceJobForm = withFormik({
   enableReinitialize: true,
   mapPropsToValues: props => props.job,
   validate: jobValidation,
@@ -124,4 +128,4 @@ const JobForm = withFormik({
   displayName: 'CreateJobForm',
 })(JobModal);
 
-export default JobForm;
+export default enhanceJobForm;

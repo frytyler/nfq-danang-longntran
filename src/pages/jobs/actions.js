@@ -1,11 +1,11 @@
 import {
   FETCH_JOBS_SUCCESSFULLY,
   SAVE_JOB,
-  SAVE_JOB_SUCCESSFULLY,
   REMOVE_JOB,
-  REMOVE_JOB_SUCCESSFULLY,
   UPDATE_JOB,
-  UPDATE_JOB_SUCCESSFULLY, SEARCH_JOB, SEARCH_JOB_SUCCESSFULLY,
+  SEARCH_JOB,
+  SEARCH_JOB_SUCCESSFULLY,
+  CREATE_JOB_AUTOMATICALLY,
 } from './constants';
 
 function fetchJobsSuccessfully(jobs) {
@@ -22,23 +22,9 @@ function saveJob(job) {
   };
 }
 
-function saveJobSuccessfully(job) {
-  return {
-    type: SAVE_JOB_SUCCESSFULLY,
-    payload: job,
-  };
-}
-
 function updateJob(job) {
   return {
     type: UPDATE_JOB,
-    payload: job,
-  };
-}
-
-function updateJobSuccessfully(job) {
-  return {
-    type: UPDATE_JOB_SUCCESSFULLY,
     payload: job,
   };
 }
@@ -50,17 +36,16 @@ function removeJob(job) {
   };
 }
 
-function removeJobSuccessfully(deletedJob) {
-  return {
-    type: REMOVE_JOB_SUCCESSFULLY,
-    payload: deletedJob,
-  };
-}
-
 function searchJob(criteria) {
   return {
     type: SEARCH_JOB,
     payload: criteria,
+  };
+}
+
+function createJobAutomatically() {
+  return {
+    type: CREATE_JOB_AUTOMATICALLY,
   };
 }
 
@@ -74,11 +59,9 @@ function searchJobSuccessfully(criteria) {
 export {
   fetchJobsSuccessfully,
   saveJob,
-  saveJobSuccessfully,
   removeJob,
-  removeJobSuccessfully,
   updateJob,
-  updateJobSuccessfully,
   searchJob,
   searchJobSuccessfully,
+  createJobAutomatically,
 };

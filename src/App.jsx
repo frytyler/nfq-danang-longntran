@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
 
 import Header from './components/Header';
@@ -26,8 +26,7 @@ function App() {
             <Row>
               <Switch>
                 <Route exact path="/jobs" component={UsersContainer} />
-                <Route exact path="/" component={Home} />
-                <Redirect to="/" />
+                <Route path="*" component={Home} />
               </Switch>
             </Row>
           </Grid>

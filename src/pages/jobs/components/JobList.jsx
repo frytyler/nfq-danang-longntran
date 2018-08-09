@@ -19,12 +19,11 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
     <Table className="table-align--middle" responsive hover>
       <thead>
         <tr>
-          <th>#</th>
           <th>Title</th>
           <th>Description</th>
           <th>Created date</th>
-          <th>Preview</th>
-          <th>#</th>
+          <th className="w20">Preview</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>
