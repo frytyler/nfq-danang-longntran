@@ -10,10 +10,10 @@ import { filterSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { saveJob, removeJob, updateJob } from './actions';
-import JobsView from './JobsView';
+import { saveJob, removeJob, searchJob, updateJob } from './actions';
+import NasaItemsView from './NasaItemsView';
 
-export class JobsContainer extends React.PureComponent {
+export class NasaItemsContainer extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -30,26 +30,32 @@ export class JobsContainer extends React.PureComponent {
     this.props.dispatchRemoveJob(job);
   }
 
+  onSearchJob = (criteria) => {
+    this.props.dispatchSearchJob(criteria);
+  }
+
   render() {
     return (
-      <JobsView
+      <NasaItemsView
         show={this.state.show}
         onSubmit={this.onSaveJob}
         jobs={this.props.jobs}
         handleRemoveJob={this.onRemoveJob}
+        handleSearchJob={this.onSearchJob}
       />
     );
   }
 }
 
-JobsContainer.propTypes = {
+NasaItemsContainer.propTypes = {
   jobs: PropTypes.instanceOf(Object),
   dispatchSaveJob: PropTypes.func.isRequired,
   dispatchUpdateJob: PropTypes.func.isRequired,
   dispatchRemoveJob: PropTypes.func.isRequired,
+  dispatchSearchJob: PropTypes.func.isRequired,
 };
 
-JobsContainer.defaultProps = {
+NasaItemsContainer.defaultProps = {
   jobs: {},
 };
 
@@ -57,6 +63,7 @@ const mapDispatchToProps = dispatch => ({
   dispatchSaveJob: job => dispatch(saveJob(job)),
   dispatchUpdateJob: job => dispatch(updateJob(job)),
   dispatchRemoveJob: job => dispatch(removeJob(job)),
+  dispatchSearchJob: criteria => dispatch(searchJob(criteria)),
 });
 
 const mapStateToProps = createStructuredSelector({
@@ -75,4 +82,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(JobsContainer);
+)(NasaItemsContainer);

@@ -5,7 +5,6 @@ import {
   UPDATE_JOB,
   SEARCH_JOB,
   SEARCH_JOB_SUCCESSFULLY,
-  CREATE_JOB_AUTOMATICALLY,
 } from './constants';
 
 function fetchJobsSuccessfully(jobs) {
@@ -43,12 +42,6 @@ function searchJob(criteria) {
   };
 }
 
-function createJobAutomatically() {
-  return {
-    type: CREATE_JOB_AUTOMATICALLY,
-  };
-}
-
 function searchJobSuccessfully(criteria) {
   return {
     type: SEARCH_JOB_SUCCESSFULLY,
@@ -63,5 +56,4 @@ export {
   updateJob,
   searchJob,
   searchJobSuccessfully,
-  createJobAutomatically,
 };

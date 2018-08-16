@@ -5,7 +5,7 @@ import { withFormik } from 'formik';
 
 import jobValidation from './validation';
 
-class JobModal extends React.PureComponent {
+class NasaItemModal extends React.PureComponent {
   isEditing = () => this.props.job && this.props.job.key;
 
   renderModalTitle = () => {
@@ -77,6 +77,7 @@ class JobModal extends React.PureComponent {
             color="primary"
             key="submit"
             type="submit"
+            onClick={handleSubmit}
           >
             {this.isEditing() ? 'Save' : 'Create'}
           </Button>
@@ -92,7 +93,7 @@ class JobModal extends React.PureComponent {
   }
 }
 
-JobModal.propTypes = {
+NasaItemModal.propTypes = {
   active: PropTypes.bool,
   job: PropTypes.instanceOf(Object).isRequired,
   /*
@@ -109,7 +110,7 @@ JobModal.propTypes = {
   errors: PropTypes.instanceOf(Object).isRequired,
 };
 
-JobModal.defaultProps = {
+NasaItemModal.defaultProps = {
   active: false,
 };
 
@@ -124,6 +125,6 @@ const enhanceJobForm = withFormik({
     setSubmitting(false);
   },
   displayName: 'CreateJobForm',
-})(JobModal);
+})(NasaItemModal);
 
 export default enhanceJobForm;

@@ -27,16 +27,16 @@ class Header extends React.PureComponent {
   render() {
     return (
       <header>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">NFQ DaNang</NavbarBrand>
+        <Navbar color="faded" light expand="md">
+          <NavbarBrand tag={Link} to="/">NFQ DaNang</NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/jobs">Items</NavLink>
+                <NavLink tag={Link} to="/nasa-items">Items</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/nasa-search">Search</NavLink>
+                <NavLink tag={Link} to="/nasa-search?criteria=">Search</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/about">About</NavLink>

@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import { Container } from 'reactstrap';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
-import Home from './pages/home';
-import UsersContainer from './pages/jobs';
+import NasaItemsContainer from './pages/nasa-items';
+import NasaSearchContainer from './pages/nasa-search';
 
 import configureStore from './configureStore';
 
@@ -22,11 +22,12 @@ function App() {
         <main>
           <Container>
             <Header />
+            <Switch>
+              <Route exact path="/nasa-items" component={NasaItemsContainer} />
+              <Route path="/nasa-search:criteria?" component={NasaSearchContainer} />
+              <Redirect to="/nasa-items" />
+            </Switch>
           </Container>
-          <Switch>
-            <Route exact path="/jobs" component={UsersContainer} />
-            <Route path="*" component={Home} />
-          </Switch>
         </main>
       </ConnectedRouter>
     </Provider>

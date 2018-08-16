@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'reactstrap';
 
+import CardList from '../../components/Card/CardList';
 import JobAction from './components/JobActions';
-import JobList from './components/JobList';
-import JobModal from './JobModal';
+import JobModal from './NasaItemModal';
 
 const emptyJob = {
   title: '',
@@ -12,7 +11,7 @@ const emptyJob = {
   mediaFile: '',
 };
 
-class JobsView extends React.PureComponent {
+class NasaItemsView extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -48,11 +47,14 @@ class JobsView extends React.PureComponent {
   }
 
   render() {
-    const { jobs, handleRemoveJob } = this.props;
+    const { jobs, handleRemoveJob, handleSearchJob } = this.props;
     return (
-      <Container>
-        <JobAction onOpenModal={this.handleOpenModal} />
-        <JobList
+      <Fragment>
+        <JobAction
+          onSearch={handleSearchJob}
+          onOpenModal={this.handleOpenModal}
+        />
+        <CardList
           removeJob={handleRemoveJob}
           jobs={jobs || []}
           updateJob={this.handleUpdateJob}
@@ -63,19 +65,21 @@ class JobsView extends React.PureComponent {
           handleCloseModal={this.handleCloseModal}
           job={this.state.job}
         />
-      </Container>
+      </Fragment>
     );
   }
 }
 
-JobsView.propTypes = {
+NasaItemsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   jobs: PropTypes.instanceOf(Object).isRequired,
   handleRemoveJob: PropTypes.func,
+  handleSearchJob: PropTypes.func,
 };
 
-JobsView.defaultProps = {
+NasaItemsView.defaultProps = {
   handleRemoveJob: () => {},
+  handleSearchJob: () => {},
 };
 
-export default JobsView;
+export default NasaItemsView;

@@ -3,7 +3,7 @@ const NASA_ENDPOINT = 'https://images-api.nasa.gov';
 
 function searchJob(criteria) {
   return new Promise((resolve, reject) => {
-    fetch(`${NASA_ENDPOINT}/search?q=${criteria}`)
+    fetch(`${NASA_ENDPOINT}/search?q=${criteria}&keywords=${criteria}&title=${criteria}&description=${criteria}`)
       .then((res) => {
         resolve(res.json());
       })
