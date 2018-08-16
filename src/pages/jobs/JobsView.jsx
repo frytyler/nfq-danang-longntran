@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Panel } from 'react-bootstrap';
+import { Container } from 'reactstrap';
 
-import './job.css';
 import JobAction from './components/JobActions';
 import JobList from './components/JobList';
 import JobModal from './JobModal';
@@ -51,28 +50,20 @@ class JobsView extends React.PureComponent {
   render() {
     const { jobs, handleRemoveJob } = this.props;
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Panel>
-            <Panel.Heading>
-              <JobAction onOpenModal={this.handleOpenModal} />
-            </Panel.Heading>
-            <Panel.Body>
-              <JobList
-                removeJob={handleRemoveJob}
-                jobs={jobs || []}
-                updateJob={this.handleUpdateJob}
-              />
-            </Panel.Body>
-          </Panel>
-          <JobModal
-            active={this.state.showModal}
-            onSubmit={this.onSaveJob}
-            handleCloseModal={this.handleCloseModal}
-            job={this.state.job}
-          />
-        </Row>
-      </Grid>
+      <Container>
+        <JobAction onOpenModal={this.handleOpenModal} />
+        <JobList
+          removeJob={handleRemoveJob}
+          jobs={jobs || []}
+          updateJob={this.handleUpdateJob}
+        />
+        <JobModal
+          active={this.state.showModal}
+          onSubmit={this.onSaveJob}
+          handleCloseModal={this.handleCloseModal}
+          job={this.state.job}
+        />
+      </Container>
     );
   }
 }

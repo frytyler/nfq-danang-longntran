@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+import { Row } from 'reactstrap';
 
 import JobItem from './JobItem';
 
@@ -16,20 +16,9 @@ const JobList = ({ removeJob, jobs, updateJob }) => {
   ));
 
   return (
-    <Table className="table-align--middle" responsive hover>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Created date</th>
-          <th className="w20">Preview</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        {jobsView}
-      </tbody>
-    </Table>
+    <Row>
+      {jobsView}
+    </Row>
   );
 };
 

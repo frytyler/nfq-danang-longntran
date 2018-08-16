@@ -1,29 +1,52 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 
-const Header = () => (
-  <header>
-    <Navbar staticTop collapseOnSelect>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <NavLink to="/">NFQ Danang</NavLink>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Nav pullRight>
-          <LinkContainer to="/jobs">
-            <NavItem eventKey={1}>Jobs</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/about">
-            <NavItem eventKey={2}>About</NavItem>
-          </LinkContainer>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  </header>
-);
+class Header extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      isOpen: true,
+    };
+  }
+
+  toggleNav = () => {
+    this.setState(({ isOpen }) => ({
+      isOpen: !isOpen,
+    }));
+  }
+
+  render() {
+    return (
+      <header>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">NFQ DaNang</NavbarBrand>
+          <NavbarToggler onClick={this.toggleNav} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink tag={Link} to="/jobs">Items</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/nasa-search">Search</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/about">About</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </header>
+    );
+  }
+}
 
 export default Header;

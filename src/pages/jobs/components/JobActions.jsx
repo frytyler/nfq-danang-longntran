@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'reactstrap';
 
 import SearchForm from './SearchForm';
 
 const JobAction = ({ onOpenModal }) => (
-  <Row className="show-grid">
-    <Col xs={6} md={6} className="vcenter">
-      <SearchForm />
+  <Row>
+    <Col md="8">
+      <SearchForm className="float-left" />
     </Col>
-    <Col xs={6} md={6} className="text-right vcenter">
-      <ButtonToolbar className="pull-right">
-        <Button bsStyle="primary" className="mr-1" onClick={onOpenModal}>Create new job</Button>
-      </ButtonToolbar>
+    <Col md="4">
+      <div className="float-right">
+        <Button color="primary" onClick={onOpenModal}>Create new item</Button>
+      </div>
     </Col>
   </Row>
 );

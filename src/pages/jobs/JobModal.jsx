@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, ButtonToolbar, Modal, FormGroup,
-  ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, Label, Input, FormGroup } from 'reactstrap';
 import { withFormik } from 'formik';
 
 import jobValidation from './validation';
@@ -28,67 +27,66 @@ class JobModal extends React.PureComponent {
     } = this.props;
 
     return (
-      <Modal show={this.props.active} onHide={this.props.handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{this.renderModalTitle()}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form id="jobForm" onSubmit={handleSubmit}>
-            <FormGroup controlId="title" validationState={touched.title && errors.title ? 'error' : null}>
-              <ControlLabel>Title</ControlLabel>
-              <FormControl
+      <Modal size="lg" isOpen={this.props.active} toggle={this.props.handleCloseModal}>
+        <ModalHeader>
+          {this.renderModalTitle()}
+        </ModalHeader>
+        <ModalBody>
+          <Form id="jobForm" onSubmit={handleSubmit}>
+            <FormGroup controlId="title">
+              <Label>Title</Label>
+              <Input
                 type="text"
                 name="title"
                 value={values.title}
-                componentClass="input"
                 placeholder="Job title"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.title && errors.title && <HelpBlock>{errors.title}</HelpBlock>}
+              {touched.title && errors.title && <span className="text-danger">{errors.title}</span>}
             </FormGroup>
-            <FormGroup controlId="description">
-              <ControlLabel>Description</ControlLabel>
-              <FormControl
+            <FormGroup>
+              <Label>Description</Label>
+              <Input
                 name="description"
                 value={values.description}
-                componentClass="textarea"
+                type="textarea"
                 placeholder="Job description"
                 onChange={handleChange}
-                rows={10}
                 onBlur={handleBlur}
               />
             </FormGroup>
-            <FormGroup controlId="mediaFile" validationState={errors.mediaFile ? 'error' : null}>
-              <ControlLabel>Preview</ControlLabel>
-              <FormControl
+            <FormGroup>
+              <Label>Preview</Label>
+              <Input
                 type="file"
                 name="mediaFile"
                 onChange={(event) => {
                   setFieldValue('mediaFile', event.currentTarget.files[0]);
                 }}
                 accept="audio/*,video/*,image/*"
-                componentClass="input"
                 placeholder="Media file"
               />
-              {errors.mediaFile && <HelpBlock>{errors.mediaFile}</HelpBlock>}
+              {errors.mediaFile && <span className="text-danger">{errors.mediaFile}</span>}
             </FormGroup>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <ButtonToolbar className="pull-right">
-            <Button
-              disabled={this.props.isSubmitting}
-              form="jobForm"
-              className="btn-primary"
-              key="submit"
-              type="submit"
-            >
-              {this.isEditing() ? 'Save' : 'Create'}
-            </Button>
-            <Button onClick={this.props.handleCloseModal}>Close</Button>
-          </ButtonToolbar>
-        </Modal.Footer>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            disabled={this.props.isSubmitting}
+            color="primary"
+            key="submit"
+            type="submit"
+          >
+            {this.isEditing() ? 'Save' : 'Create'}
+          </Button>
+          <Button
+            onClick={this.props.handleCloseModal}
+            color="secondary"
+          >
+            Close
+          </Button>
+        </ModalFooter>
       </Modal>
     );
   }

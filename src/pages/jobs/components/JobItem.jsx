@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, ButtonToolbar, Button } from 'react-bootstrap';
+import { Col, CardImg, CardBody, CardTitle,
+  CardSubtitle, Button, CardFooter } from 'reactstrap';
 
+import { CardTextEllipsis, FullHeightCard } from './JobItem.style';
 import convertTimeStampToDate from '../../../utils/dateTimeUtils';
-import PreviewMedia from './PreviewMdia';
 
 class JobItem extends React.PureComponent {
   update = () => {
@@ -17,24 +18,20 @@ class JobItem extends React.PureComponent {
   render() {
     const { job } = this.props;
     return (
-      <tr>
-        <td>{job.title}</td>
-        <td>{job.description}</td>
-        <td>{convertTimeStampToDate(job.createdAt)}</td>
-        <td>
-          <PreviewMedia mediaUrl={job.mediaFile} />
-        </td>
-        <td className="w10">
-          <ButtonToolbar className="pull-right">
-            <Button className="btn btn-default" onClick={this.update}>
-              <Glyphicon glyph="pencil" />
-            </Button>
-            <Button className="btn btn-danger" onClick={this.remove}>
-              <Glyphicon glyph="trash" />
-            </Button>
-          </ButtonToolbar>
-        </td>
-      </tr>
+      <Col sm="4">
+        <FullHeightCard>
+          <CardImg top width="100%" src={job.mediaFile} alt="Card image cap" />
+          <CardBody>
+            <CardTitle>{job.title}</CardTitle>
+            <CardSubtitle>{convertTimeStampToDate(job.createdAt)}</CardSubtitle>
+            <CardTextEllipsis>{job.description}</CardTextEllipsis>
+          </CardBody>
+          <CardFooter className="text-muted">
+            <Button onClick={this.update}>Edit</Button>
+            <Button color="danger" onClick={this.remove}>Delete</Button>
+          </CardFooter>
+        </FullHeightCard>
+      </Col>
     );
   }
 }
