@@ -12,6 +12,7 @@ import saga from './saga';
 
 import { saveJob, removeJob, searchJob, updateJob } from './actions';
 import NasaItemsView from './NasaItemsView';
+import { context } from './constants';
 
 export class NasaItemsContainer extends React.PureComponent {
   constructor() {
@@ -39,7 +40,7 @@ export class NasaItemsContainer extends React.PureComponent {
       <NasaItemsView
         show={this.state.show}
         onSubmit={this.onSaveJob}
-        jobs={this.props.jobs}
+        jobs={this.props.items}
         handleRemoveJob={this.onRemoveJob}
         handleSearchJob={this.onSearchJob}
       />
@@ -48,15 +49,11 @@ export class NasaItemsContainer extends React.PureComponent {
 }
 
 NasaItemsContainer.propTypes = {
-  jobs: PropTypes.instanceOf(Object),
+  items: PropTypes.instanceOf(Object).isRequired,
   dispatchSaveJob: PropTypes.func.isRequired,
   dispatchUpdateJob: PropTypes.func.isRequired,
   dispatchRemoveJob: PropTypes.func.isRequired,
   dispatchSearchJob: PropTypes.func.isRequired,
-};
-
-NasaItemsContainer.defaultProps = {
-  jobs: {},
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -67,7 +64,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  jobs: filterSelector(),
+  items: filterSelector(),
 });
 
 const withConnect = connect(
@@ -75,8 +72,8 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'jobs', reducer });
-const withSaga = injectSaga({ key: 'jobs', saga });
+const withReducer = injectReducer({ key: context, reducer });
+const withSaga = injectSaga({ key: context, saga });
 
 export default compose(
   withReducer,

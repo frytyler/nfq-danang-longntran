@@ -1,8 +1,8 @@
 import { List, Record } from 'immutable';
 
-const JobState = new Record({
+const NasaItemsState = new Record({
   criteria: '',
-  jobs: new List(),
+  data: new List(),
 });
 
-export default JobState;
+export default NasaItemsState;

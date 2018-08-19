@@ -1,18 +1,13 @@
-import NasaState from './model';
-import {
-  UPDATE_CRITERIA,
-  SEARCH_ITEMS_SUCCESSFULLY,
-} from './constants';
+import NasaSearchState from './model';
+import { NASA_SEARCH } from './actions';
 
-function nasaReducer(state = NasaState(), { type, payload }) {
+function nasaSearchReducer(state = NasaSearchState(), { type, payload }) {
   switch (type) {
-    case UPDATE_CRITERIA:
-      return state.set('criteria', payload);
-    case SEARCH_ITEMS_SUCCESSFULLY:
-      return state.set('items', payload);
+    case NASA_SEARCH.SUCCESS:
+      return state.set('data', payload.response);
     default:
       return state;
   }
 }
 
-export default nasaReducer;
+export default nasaSearchReducer;

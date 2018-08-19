@@ -1,56 +1,56 @@
 import {
-  FETCH_JOBS_SUCCESSFULLY,
-  SAVE_JOB,
-  REMOVE_JOB,
-  UPDATE_JOB,
-  SEARCH_JOB,
-  SEARCH_JOB_SUCCESSFULLY,
+  LOAD_ITEMS_SUCCESSFULLY,
+  SAVE_ITEM,
+  REMOVE_ITEM,
+  UPDATE_ITEM,
+  SEARCH_ITEM,
+  SEARCH_ITEM_SUCCESSFULLY,
 } from './constants';
 
-function fetchJobsSuccessfully(jobs) {
+function loadItemsSuccessfully(items) {
   return {
-    type: FETCH_JOBS_SUCCESSFULLY,
-    payload: jobs,
+    type: LOAD_ITEMS_SUCCESSFULLY,
+    payload: items,
   };
 }
 
 function saveJob(job) {
   return {
-    type: SAVE_JOB,
+    type: SAVE_ITEM,
     payload: job,
   };
 }
 
 function updateJob(job) {
   return {
-    type: UPDATE_JOB,
+    type: UPDATE_ITEM,
     payload: job,
   };
 }
 
 function removeJob(job) {
   return {
-    type: REMOVE_JOB,
+    type: REMOVE_ITEM,
     payload: job,
   };
 }
 
 function searchJob(criteria) {
   return {
-    type: SEARCH_JOB,
+    type: SEARCH_ITEM,
     payload: criteria,
   };
 }
 
 function searchJobSuccessfully(criteria) {
   return {
-    type: SEARCH_JOB_SUCCESSFULLY,
+    type: SEARCH_ITEM_SUCCESSFULLY,
     payload: criteria,
   };
 }
 
 export {
-  fetchJobsSuccessfully,
+  loadItemsSuccessfully,
   saveJob,
   removeJob,
   updateJob,

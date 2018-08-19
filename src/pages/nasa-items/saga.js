@@ -1,17 +1,15 @@
-import { put, call, takeLatest, take, fork, select } from 'redux-saga/effects';
+import { put, call, takeLatest, take, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
 import { rsf } from '../../firebase';
-import { searchJob, getMediaAssets } from '../../services/nasaServices';
-import { fetchJobsSuccessfully, searchJobSuccessfully } from './actions';
-import { context, CREATE_JOB_AUTOMATICALLY, REMOVE_JOB, SAVE_JOB, SEARCH_JOB, UPDATE_JOB } from './constants';
-import { getCriteria } from './selectors';
+import { loadItemsSuccessfully, searchJobSuccessfully } from './actions';
+import { context, REMOVE_ITEM, SAVE_ITEM, SEARCH_ITEM, UPDATE_ITEM } from './constants';
 
 function* loadAsyncJob() {
   yield fork(
     rsf.database.sync,
     'jobs',
-    { successActionCreator: fetchJobsSuccessfully, transform: mapToArray },
+    { successActionCreator: loadItemsSuccessfully, transform: mapToArray },
   );
 }
 
@@ -43,11 +41,6 @@ function* uploadMediaFile(mediaFile) {
   }
 }
 
-function* loadNasaMediaAssets(nasaId) {
-  const { collection: { items } } = yield call(getMediaAssets, nasaId);
-  return items;
-}
-
 export function* createJobWorker({ payload }) {
   const newJob = payload;
   newJob.createdAt = new Date().getTime();
@@ -56,26 +49,7 @@ export function* createJobWorker({ payload }) {
     const mediaUrl = yield call(uploadMediaFile, payload.mediaFile);
     newJob.mediaFile = mediaUrl;
   }
-
   yield call(rsf.database.create, context, newJob);
-}
-
-export function* createAutomaticallyJobWorker() {
-  const criteria = yield select(getCriteria);
-  const { collection: { items } } = yield call(searchJob, criteria);
-  const {
-    title, description, date_created, nasa_id,
-  } = items[0].data[0];
-
-  const [first] = yield call(loadNasaMediaAssets, nasa_id);
-  const createdDate = new Date(date_created);
-  const job = {
-    title,
-    description,
-    createdAt: createdDate.getTime(),
-    mediaFile: first.href,
-  };
-  yield call(rsf.database.create, context, job);
 }
 
 export function* updateJobWorker({ payload }) {
@@ -109,9 +83,8 @@ export default function* jobSagas() {
   yield [
     fork(loadAsyncJob),
   ];
-  yield takeLatest(SAVE_JOB, createJobWorker);
-  yield takeLatest(UPDATE_JOB, updateJobWorker);
-  yield takeLatest(REMOVE_JOB, removeJobWorker);
-  yield takeLatest(SEARCH_JOB, searchJobWorker);
-  yield takeLatest(CREATE_JOB_AUTOMATICALLY, createAutomaticallyJobWorker);
+  yield takeLatest(SAVE_ITEM, createJobWorker);
+  yield takeLatest(UPDATE_ITEM, updateJobWorker);
+  yield takeLatest(REMOVE_ITEM, removeJobWorker);
+  yield takeLatest(SEARCH_ITEM, searchJobWorker);
 }

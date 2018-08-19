@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
@@ -9,24 +8,25 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
-import { createItem, searchItems } from './actions';
+import { createItem, nasaSearch } from './actions';
 import { itemsSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
 import SearchBox from '../../components/SearchBox';
 import NasaSearchView from './NasaSearchView';
+import { context } from './constants';
 
 class NasaSearchContainer extends React.PureComponent {
   componentDidMount() {
-	  const { match: { params } } = this.props;
-	  if (isEmpty(params.criteria)) return;
+    const { match: { params } } = this.props;
+    if (isEmpty(params.criteria)) return;
     this.props.dispatchSearch(params.criteria);
   }
 
   handleSearch = ({ criteria }) => {
     this.props.history.push({
-			pathname: `/nasa-search/criteria=${criteria}`,
+      pathname: `/nasa-search/criteria=${criteria}`,
     });
     this.props.dispatchSearch(criteria);
   }
@@ -53,7 +53,9 @@ class NasaSearchContainer extends React.PureComponent {
 NasaSearchContainer.propTypes = {
   items: PropTypes.instanceOf(Object),
   dispatchSearch: PropTypes.func.isRequired,
-	dispatchCreate: PropTypes.func.isRequired,
+  dispatchCreate: PropTypes.func.isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
 };
 
 NasaSearchContainer.defaultProps = {
@@ -65,14 +67,14 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchSearch: criteria => dispatch(searchItems(criteria)),
-	dispatchCreate: item => dispatch(createItem(item)),
+  dispatchSearch: criteria => dispatch(nasaSearch.request(criteria)),
+  dispatchCreate: item => dispatch(createItem(item)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'nasa', reducer });
-const withSaga = injectSaga({ key: 'nasa', saga });
+const withReducer = injectReducer({ key: context, reducer });
+const withSaga = injectSaga({ key: context, saga });
 
 export default compose(
   withRouter,

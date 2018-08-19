@@ -2,16 +2,14 @@ import { isEmpty } from 'lodash';
 import { call, takeLatest, put } from 'redux-saga/effects';
 
 import { searchJob } from '../../services/nasaServices';
-import { searchItemsSuccessfully, updateCriteria } from './actions';
-import { CREATE_ITEM, SEARCH_ITEMS } from './constants';
+import { NASA_SEARCH, nasaSearch } from './actions';
+import { CREATE_ITEM } from './constants';
 import { rsf } from '../../firebase';
 
-export function* searchWorker({ payload }) {
-  yield put(updateCriteria(payload));
-
-  const { collection: { items } } = yield call(searchJob, payload);
+export function* searchWorker({ payload: { criteria } }) {
+  const { collection: { items } } = yield call(searchJob, criteria);
   if (isEmpty(items)) {
-    return yield put(searchItemsSuccessfully([]));
+    return yield put(nasaSearch.success([]));
   }
 
   const formattedItems = items.reduce((result, item) => {
@@ -20,7 +18,7 @@ export function* searchWorker({ payload }) {
     return result.concat(data);
   }, []);
 
-  return yield put(searchItemsSuccessfully(formattedItems));
+  return yield put(nasaSearch.success(formattedItems));
 }
 
 function* createItemWorker({ payload }) {
@@ -30,6 +28,6 @@ function* createItemWorker({ payload }) {
 }
 
 export default function* nasaSagas() {
-  yield takeLatest(SEARCH_ITEMS, searchWorker);
+  yield takeLatest(NASA_SEARCH.REQUEST, searchWorker);
   yield takeLatest(CREATE_ITEM, createItemWorker);
 }

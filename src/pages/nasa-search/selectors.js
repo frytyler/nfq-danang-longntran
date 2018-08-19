@@ -1,16 +1,16 @@
 import { createSelector } from 'reselect';
 import { context } from './constants';
 
-const getItems = state => state.get(context).items;
+const getData = state => state.get(context).data;
 const getCriteria = state => state.get(context).criteria;
 const itemsSelector = () => createSelector(
-  getItems,
+  getData,
   getCriteria,
-  (items, criteria) => (criteria.length === 0 ? [] : items),
+  items => items,
 );
 
 export {
-  getItems,
+  getData,
   getCriteria,
   itemsSelector,
 };
