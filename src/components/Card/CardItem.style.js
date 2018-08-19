@@ -17,10 +17,6 @@ const CardFooterWrapper = style(CardFooter)`
   padding: 0;
 `;
 
-const ListGroupWrapper = style(ListGroup)`
-  flex-direction: row;
-`;
-
 const ListGroupItemWrapper = style(ListGroupItem)`
   text-align: center;
   flex: 1;
@@ -30,6 +26,5 @@ export {
   CardTextEllipsis,
   CardFooterWrapper,
   FullHeightCard,
-  ListGroupWrapper,
   ListGroupItemWrapper,
 };

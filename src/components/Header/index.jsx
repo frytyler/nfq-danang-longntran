@@ -36,7 +36,7 @@ class Header extends React.PureComponent {
                 <NavLink tag={Link} to="/nasa-items">Items</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/nasa-search?criteria=">Search</NavLink>
+                <NavLink tag={Link} to="/nasa-search">Search</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/about">About</NavLink>

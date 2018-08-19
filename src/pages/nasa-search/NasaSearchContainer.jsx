@@ -2,7 +2,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-import queryString from 'query-string';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -20,14 +19,14 @@ import NasaSearchView from './NasaSearchView';
 
 class NasaSearchContainer extends React.PureComponent {
   componentDidMount() {
-	  const { criteria } = queryString.parse(this.props.location.search);
-	  if (isEmpty(criteria)) return;
-    this.props.dispatchSearch(criteria);
+	  const { match: { params } } = this.props;
+	  if (isEmpty(params.criteria)) return;
+    this.props.dispatchSearch(params.criteria);
   }
 
   handleSearch = ({ criteria }) => {
     this.props.history.push({
-	    search: `?criteria=${criteria}`,
+			pathname: `/nasa-search/criteria=${criteria}`,
     });
     this.props.dispatchSearch(criteria);
   }

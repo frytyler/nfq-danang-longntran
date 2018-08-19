@@ -20,6 +20,7 @@ class SearchBox extends React.PureComponent {
     return (
       <FormGroup>
         <Input
+          aria-label="criteria"
           name="criteria"
           value={values.criteria}
           onKeyUp={this.onKeyUp}

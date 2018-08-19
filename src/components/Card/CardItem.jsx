@@ -8,7 +8,7 @@ import {
   FullHeightCard,
   CardFooterWrapper,
   ListGroupItemWrapper,
-  ListGroupWrapper } from './CardItem.style';
+} from './CardItem.style';
 
 class CardItem extends React.PureComponent {
   update = () => {
@@ -27,22 +27,22 @@ class CardItem extends React.PureComponent {
     const { isExist } = this.props;
     if (isExist) {
       return (
-        <ListGroupWrapper flush>
+        <div className="list-group flex-row list-group-flush">
           <ListGroupItemWrapper className="text-primary" tag="button" action onClick={this.update}>
             Edit
           </ListGroupItemWrapper>
           <ListGroupItemWrapper className="border-top-0 text-danger" tag="button" action onClick={this.remove}>
             Delete
           </ListGroupItemWrapper>
-        </ListGroupWrapper>
+        </div>
       );
     }
     return (
-      <ListGroupWrapper flush>
+      <div className="list-group list-group-flush">
         <ListGroupItemWrapper className="text-primary" tag="button" action onClick={this.create}>
           Add to list
         </ListGroupItemWrapper>
-      </ListGroupWrapper>
+      </div>
     );
   }
 
