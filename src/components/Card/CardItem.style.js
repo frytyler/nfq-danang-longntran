@@ -1,5 +1,5 @@
 import style from 'styled-components';
-import { Card, CardFooter, CardText, ListGroup, ListGroupItem } from 'reactstrap';
+import { Card, CardFooter, CardText, ListGroupItem, CardImg } from 'reactstrap';
 
 const CardTextEllipsis = style(CardText)`
   overflow: hidden;
@@ -19,7 +19,21 @@ const CardFooterWrapper = style(CardFooter)`
 
 const ListGroupItemWrapper = style(ListGroupItem)`
   text-align: center;
+  background: #fafafa;
   flex: 1;
+  border: 0;
+  padding: 0 1.25rem;
+  margin: .75rem 0 !important;
+  border-right: 1px solid #ccc !important;
+  
+  &:last-child {
+    border-right: 0 !important;
+  }
+`;
+
+const CardImgWrapper = style(CardImg)`
+  max-height: 230px;
+  object-fit: cover;
 `;
 
 export {
@@ -27,4 +41,5 @@ export {
   CardFooterWrapper,
   FullHeightCard,
   ListGroupItemWrapper,
+  CardImgWrapper,
 };

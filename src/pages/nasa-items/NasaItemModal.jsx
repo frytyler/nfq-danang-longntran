@@ -33,7 +33,7 @@ class NasaItemModal extends React.PureComponent {
         </ModalHeader>
         <ModalBody>
           <Form id="jobForm" onSubmit={handleSubmit}>
-            <FormGroup controlId="title">
+            <FormGroup>
               <Label>Title</Label>
               <Input
                 type="text"

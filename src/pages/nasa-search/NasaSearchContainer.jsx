@@ -19,21 +19,24 @@ import { context } from './constants';
 
 class NasaSearchContainer extends React.PureComponent {
   componentDidMount() {
-    const { match: { params } } = this.props;
-    if (isEmpty(params.criteria)) return;
-    this.props.dispatchSearch(params.criteria);
+    const { location: { search } } = this.props;
+    if (isEmpty(search)) return;
+
+    const querySegment = search.split('query=');
+    const query = querySegment[querySegment.length - 1] || '';
+    this.props.dispatchSearch(query);
   }
 
   handleSearch = ({ criteria }) => {
     this.props.history.push({
-      pathname: `/nasa-search/criteria=${criteria}`,
+      pathname: '/nasa-search',
+      search: `?query=${criteria}`,
     });
     this.props.dispatchSearch(criteria);
   }
 
   handleCreateItem = (item) => {
     this.props.dispatchCreate(item);
-    this.props.history.push('/nasa-items');
   }
 
   render() {
@@ -54,7 +57,7 @@ NasaSearchContainer.propTypes = {
   items: PropTypes.instanceOf(Object),
   dispatchSearch: PropTypes.func.isRequired,
   dispatchCreate: PropTypes.func.isRequired,
-  match: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
 };
 

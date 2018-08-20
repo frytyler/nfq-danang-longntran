@@ -19,16 +19,18 @@ function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <main>
-          <Container>
-            <Header />
-            <Switch>
-              <Route exact path="/nasa-items" component={NasaItemsContainer} />
-              <Route path="/nasa-search:criteria?" component={NasaSearchContainer} />
-              <Redirect to="/nasa-items" />
-            </Switch>
-          </Container>
-        </main>
+        <div>
+          <Header />
+          <main className="mt-5">
+            <Container>
+              <Switch>
+                <Route exact path="/nasa-items" component={NasaItemsContainer} />
+                <Route path="/nasa-search/:query?" component={NasaSearchContainer} />
+                <Redirect to="/nasa-items" />
+              </Switch>
+            </Container>
+          </main>
+        </div>
       </ConnectedRouter>
     </Provider>
   );

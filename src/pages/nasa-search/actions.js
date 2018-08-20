@@ -8,10 +8,4 @@ export const nasaSearch = {
   success: response => createAction(NASA_SEARCH[SUCCESS], { response }),
   failure: error => createAction(NASA_SEARCH[FAILURE], { error }),
 };
-
-export function createItem(item) {
-  return {
-    type: CREATE_ITEM,
-    payload: item,
-  };
-}
+export const createItem = item => createAction(CREATE_ITEM, item);

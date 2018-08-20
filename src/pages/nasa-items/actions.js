@@ -1,3 +1,4 @@
+import { createAction } from '../../utils/actionCreator';
 import {
   LOAD_ITEMS_SUCCESSFULLY,
   SAVE_ITEM,
@@ -7,53 +8,9 @@ import {
   SEARCH_ITEM_SUCCESSFULLY,
 } from './constants';
 
-function loadItemsSuccessfully(items) {
-  return {
-    type: LOAD_ITEMS_SUCCESSFULLY,
-    payload: items,
-  };
-}
-
-function saveJob(job) {
-  return {
-    type: SAVE_ITEM,
-    payload: job,
-  };
-}
-
-function updateJob(job) {
-  return {
-    type: UPDATE_ITEM,
-    payload: job,
-  };
-}
-
-function removeJob(job) {
-  return {
-    type: REMOVE_ITEM,
-    payload: job,
-  };
-}
-
-function searchJob(criteria) {
-  return {
-    type: SEARCH_ITEM,
-    payload: criteria,
-  };
-}
-
-function searchJobSuccessfully(criteria) {
-  return {
-    type: SEARCH_ITEM_SUCCESSFULLY,
-    payload: criteria,
-  };
-}
-
-export {
-  loadItemsSuccessfully,
-  saveJob,
-  removeJob,
-  updateJob,
-  searchJob,
-  searchJobSuccessfully,
-};
+export const loadItemsSuccessfully = items => createAction(LOAD_ITEMS_SUCCESSFULLY, items);
+export const saveJob = job => createAction(SAVE_ITEM, job);
+export const updateJob = job => createAction(UPDATE_ITEM, job);
+export const removeJob = job => createAction(REMOVE_ITEM, job);
+export const searchJob = criteria => createAction(SEARCH_ITEM, criteria);
+export const searchJobSuccessfully = criteria => createAction(SEARCH_ITEM_SUCCESSFULLY, criteria);

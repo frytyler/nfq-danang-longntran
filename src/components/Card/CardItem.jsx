@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Col, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 import convertTimeStampToDate from '../../utils/dateTimeUtils';
 import {
@@ -8,6 +8,7 @@ import {
   FullHeightCard,
   CardFooterWrapper,
   ListGroupItemWrapper,
+  CardImgWrapper,
 } from './CardItem.style';
 
 class CardItem extends React.PureComponent {
@@ -27,20 +28,23 @@ class CardItem extends React.PureComponent {
     const { isExist } = this.props;
     if (isExist) {
       return (
-        <div className="list-group flex-row list-group-flush">
-          <ListGroupItemWrapper className="text-primary" tag="button" action onClick={this.update}>
-            Edit
+        <ul className="list-group flex-row list-group-flush">
+          <ListGroupItemWrapper onClick={this.update}>
+            <span className="icon-heart" />
           </ListGroupItemWrapper>
-          <ListGroupItemWrapper className="border-top-0 text-danger" tag="button" action onClick={this.remove}>
-            Delete
+          <ListGroupItemWrapper onClick={this.update}>
+            <span className="icon-pencil" />
           </ListGroupItemWrapper>
-        </div>
+          <ListGroupItemWrapper onClick={this.remove}>
+            <span className="icon-bin" />
+          </ListGroupItemWrapper>
+        </ul>
       );
     }
     return (
       <div className="list-group list-group-flush">
-        <ListGroupItemWrapper className="text-primary" tag="button" action onClick={this.create}>
-          Add to list
+        <ListGroupItemWrapper className="text-primary" onClick={this.create}>
+          <span className="icon-plus" />{' Add to list'}
         </ListGroupItemWrapper>
       </div>
     );
@@ -53,9 +57,9 @@ class CardItem extends React.PureComponent {
       },
     } = this.props;
     return (
-      <Col sm="4" className="mb-3">
-        <FullHeightCard>
-          <CardImg width="100%" src={mediaFile} alt={title} />
+      <Col md="4" sm="6" className="mb-3">
+        <FullHeightCard className="shadow-sm bg-white rounded">
+          <CardImgWrapper width="100%" src={mediaFile} alt={title} />
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardSubtitle className="text-muted">{convertTimeStampToDate(createdAt)}</CardSubtitle>
