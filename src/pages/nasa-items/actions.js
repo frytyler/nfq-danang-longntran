@@ -1,16 +1,19 @@
-import { createAction } from '../../utils/actionCreator';
+import { createAction, createRequestTypes } from '../../utils/actionCreator';
 import {
   LOAD_ITEMS_SUCCESSFULLY,
   SAVE_ITEM,
   REMOVE_ITEM,
   UPDATE_ITEM,
-  SEARCH_ITEM,
-  SEARCH_ITEM_SUCCESSFULLY,
 } from './constants';
+import { REQUEST, SUCCESS } from '../../utils/constants';
 
 export const loadItemsSuccessfully = items => createAction(LOAD_ITEMS_SUCCESSFULLY, items);
-export const saveJob = job => createAction(SAVE_ITEM, job);
-export const updateJob = job => createAction(UPDATE_ITEM, job);
-export const removeJob = job => createAction(REMOVE_ITEM, job);
-export const searchJob = criteria => createAction(SEARCH_ITEM, criteria);
-export const searchJobSuccessfully = criteria => createAction(SEARCH_ITEM_SUCCESSFULLY, criteria);
+export const saveItem = item => createAction(SAVE_ITEM, item);
+export const updateItem = item => createAction(UPDATE_ITEM, item);
+export const removeItem = key => createAction(REMOVE_ITEM, key);
+
+export const NASA_FILTER = createRequestTypes('NASA_FILTER');
+export const nasaFilterAction = {
+  request: criteria => createAction(NASA_FILTER[REQUEST], criteria),
+  success: criteria => createAction(NASA_FILTER[SUCCESS], criteria),
+};

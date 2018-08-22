@@ -5,16 +5,17 @@ import { Row } from 'reactstrap';
 import CardItem from './CardItem';
 
 const CardList = ({
-  removeJob, jobs, updateJob, onCreate, isExist,
+  onRemove, items, onUpdate, onAddToList, isExist, onSelectFavorite,
 }) => {
-  const cardListView = jobs.map((job, key) => (
+  const cardListView = items.map((item, key) => (
     <CardItem
       index={key + 1}
-      key={job.key || job.nasa_id}
-      data={job}
-      onDelete={removeJob}
-      onUpdate={updateJob}
-      onCreate={onCreate}
+      key={item.key || item.nasa_id}
+      data={item}
+      onDelete={onRemove}
+      onUpdate={onUpdate}
+      onAdd={onAddToList}
+      onSelectFavorite={onSelectFavorite}
       isExist={isExist}
     />
   ));
@@ -27,17 +28,19 @@ const CardList = ({
 };
 
 CardList.propTypes = {
-  jobs: PropTypes.instanceOf(Object).isRequired,
-  removeJob: PropTypes.func,
-  updateJob: PropTypes.func,
-  onCreate: PropTypes.func,
+  items: PropTypes.instanceOf(Object).isRequired,
+  onRemove: PropTypes.func,
+  onUpdate: PropTypes.func,
+  onAddToList: PropTypes.func,
+  onSelectFavorite: PropTypes.func,
   isExist: PropTypes.bool,
 };
 
 CardList.defaultProps = {
-  removeJob: () => {},
-  updateJob: () => {},
-  onCreate: () => {},
+  onRemove: () => {},
+  onUpdate: () => {},
+  onAddToList: () => {},
+  onSelectFavorite: () => {},
   isExist: true,
 };
 

@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import CardList from '../../components/Card/CardList';
-import JobAction from './components/JobActions';
-import JobModal from './NasaItemModal';
+import ActionBar from './components/ActionBar';
+import NasaModal from './NasaItemModal';
 
-const emptyJob = {
+const emptyItem = {
   title: '',
   description: '',
   mediaFile: '',
@@ -16,21 +16,21 @@ class NasaItemsView extends React.PureComponent {
     super();
     this.state = {
       showModal: false,
-      job: emptyJob,
+      item: emptyItem,
     };
   }
 
-  onSaveJob = (job) => {
-    this.props.onSubmit(job);
+  onSave = (item) => {
+    this.props.onSubmit(item);
     this.handleCloseModal();
   }
 
-  handleOpenModal = () => {
-    this.setState(() => ({ showModal: true, job: emptyJob }));
+  onShowModal = () => {
+    this.setState(() => ({ showModal: true, item: emptyItem }));
   }
 
   handleCloseModal = () => {
-    this.setState(() => ({ showModal: false, job: emptyJob }));
+    this.setState(() => ({ showModal: false, item: emptyItem }));
   }
 
   handleInputChange = (event) => {
@@ -39,31 +39,31 @@ class NasaItemsView extends React.PureComponent {
     });
   }
 
-  handleUpdateJob = (job) => {
-    this.setState(() => ({
-      job,
-      showModal: true,
-    }));
+  handleUpdate = (item) => {
+    this.setState(() => ({ item, showModal: true }));
   }
 
   render() {
-    const { jobs, handleRemoveJob, handleSearchJob } = this.props;
+    const {
+      items, onRemove, onSearch, onAddToFavorites,
+    } = this.props;
     return (
       <Fragment>
-        <JobAction
-          onSearch={handleSearchJob}
-          onOpenModal={this.handleOpenModal}
+        <ActionBar
+          onSearch={onSearch}
+          onOpenModal={this.onShowModal}
         />
         <CardList
-          removeJob={handleRemoveJob}
-          jobs={jobs || []}
-          updateJob={this.handleUpdateJob}
+          items={items || []}
+          onRemove={onRemove}
+          onUpdate={this.handleUpdate}
+          onSelectFavorite={onAddToFavorites}
         />
-        <JobModal
+        <NasaModal
+          item={this.state.item}
           active={this.state.showModal}
-          onSubmit={this.onSaveJob}
+          onSubmit={this.onSave}
           handleCloseModal={this.handleCloseModal}
-          job={this.state.job}
         />
       </Fragment>
     );
@@ -72,14 +72,16 @@ class NasaItemsView extends React.PureComponent {
 
 NasaItemsView.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  jobs: PropTypes.instanceOf(Object).isRequired,
-  handleRemoveJob: PropTypes.func,
-  handleSearchJob: PropTypes.func,
+  items: PropTypes.instanceOf(Object).isRequired,
+  onRemove: PropTypes.func,
+  onSearch: PropTypes.func,
+  onAddToFavorites: PropTypes.func,
 };
 
 NasaItemsView.defaultProps = {
-  handleRemoveJob: () => {},
-  handleSearchJob: () => {},
+  onRemove: () => {},
+  onSearch: () => {},
+  onAddToFavorites: () => {},
 };
 
 export default NasaItemsView;

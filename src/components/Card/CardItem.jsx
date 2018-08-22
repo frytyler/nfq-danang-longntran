@@ -12,6 +12,14 @@ import {
 } from './CardItem.style';
 
 class CardItem extends React.PureComponent {
+  getFavoriteClass = () => {
+    const { data: { isFavorite = false } } = this.props;
+    if (isFavorite) {
+      return 'icon-heart text-danger';
+    }
+    return 'icon-heart';
+  }
+
   update = () => {
     this.props.onUpdate(this.props.data);
   }
@@ -20,8 +28,12 @@ class CardItem extends React.PureComponent {
     this.props.onDelete(this.props.data);
   }
 
-  create = () => {
-    this.props.onCreate(this.props.data);
+  addToList = () => {
+    this.props.onAdd(this.props.data);
+  }
+
+  addFavorite = () => {
+    this.props.onSelectFavorite(this.props.data);
   }
 
   renderCardFooter = () => {
@@ -29,8 +41,8 @@ class CardItem extends React.PureComponent {
     if (isExist) {
       return (
         <ul className="list-group flex-row list-group-flush">
-          <ListGroupItemWrapper onClick={this.update}>
-            <span className="icon-heart" />
+          <ListGroupItemWrapper onClick={this.addFavorite}>
+            <span className={this.getFavoriteClass()} />
           </ListGroupItemWrapper>
           <ListGroupItemWrapper onClick={this.update}>
             <span className="icon-pencil" />
@@ -43,7 +55,7 @@ class CardItem extends React.PureComponent {
     }
     return (
       <div className="list-group list-group-flush">
-        <ListGroupItemWrapper className="text-primary" onClick={this.create}>
+        <ListGroupItemWrapper className="text-primary" onClick={this.addToList}>
           <span className="icon-plus" />{' Add to list'}
         </ListGroupItemWrapper>
       </div>
@@ -78,14 +90,16 @@ CardItem.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
   onDelete: PropTypes.func,
   onUpdate: PropTypes.func,
-  onCreate: PropTypes.func,
+  onAdd: PropTypes.func,
+  onSelectFavorite: PropTypes.func,
   isExist: PropTypes.bool,
 };
 
 CardItem.defaultProps = {
   onDelete: () => {},
   onUpdate: () => {},
-  onCreate: () => {},
+  onAdd: () => {},
+  onSelectFavorite: () => {},
   isExist: true,
 };
 

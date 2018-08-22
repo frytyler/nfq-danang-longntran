@@ -2,8 +2,9 @@ import { eventChannel } from 'redux-saga';
 import { put, call, takeLatest, take, fork } from 'redux-saga/effects';
 
 import { rsf } from '../../firebase';
-import { loadItemsSuccessfully, searchJobSuccessfully } from './actions';
-import { REMOVE_ITEM, SAVE_ITEM, SEARCH_ITEM, UPDATE_ITEM } from './constants';
+import { loadItemsSuccessfully, NASA_FILTER, nasaFilterAction } from './actions';
+import { REMOVE_ITEM, SAVE_ITEM, UPDATE_ITEM } from './constants';
+import { REQUEST } from '../../utils/constants';
 
 function mapToArray(data) {
   const values = data.value;
@@ -66,14 +67,13 @@ function* updateJobWorker({ payload }) {
 }
 
 function* removeJobWorker({ payload }) {
-  const { key } = payload;
-  yield call(rsf.database.delete, `${'jobs'}/${key}`);
+  yield call(rsf.database.delete, `${'jobs'}/${payload}`);
 }
 
 function* searchJobWorker({ payload }) {
   try {
     const { criteria } = payload;
-    yield put(searchJobSuccessfully(criteria));
+    yield put(nasaFilterAction.success(criteria));
   } catch (errorMsg) {
     throw new Error(errorMsg);
   }
@@ -84,5 +84,5 @@ export default function* jobSagas() {
   yield takeLatest(SAVE_ITEM, createJobWorker);
   yield takeLatest(UPDATE_ITEM, updateJobWorker);
   yield takeLatest(REMOVE_ITEM, removeJobWorker);
-  yield takeLatest(SEARCH_ITEM, searchJobWorker);
+  yield takeLatest(NASA_FILTER[REQUEST], searchJobWorker);
 }

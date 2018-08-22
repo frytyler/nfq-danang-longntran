@@ -1,12 +1,33 @@
 import style from 'styled-components';
-import { Card, CardFooter, CardText, ListGroupItem, CardImg } from 'reactstrap';
+import { Card, CardFooter, ListGroupItem, CardText, CardImg } from 'reactstrap';
 
 const CardTextEllipsis = style(CardText)`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 100px; 
   color: rgba(0, 0, 0, .45);
   font-size: 14px;
+  
+  overflow: hidden;
+  position: relative;
+  max-height: 6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+  }
 `;
 
 const FullHeightCard = style(Card)`

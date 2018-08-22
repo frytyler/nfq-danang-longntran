@@ -1,4 +1,4 @@
-const jobValidation = ({ title, mediaFile }) => {
+const itemValidation = ({ title, mediaFile }) => {
   const errors = {};
   if (!title) {
     errors.title = 'Title is required';
@@ -10,4 +10,4 @@ const jobValidation = ({ title, mediaFile }) => {
   return errors;
 };
 
-export default jobValidation;
+export default itemValidation;

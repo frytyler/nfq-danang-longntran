@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
+
 import CardList from '../../components/Card/CardList';
 
 class NasaSearchView extends React.PureComponent {
   render() {
-    const { jobs, onCreate } = this.props;
+    const { items, addToListItem } = this.props;
+    if (isEmpty(items)) {
+      return <div>Not found</div>;
+    }
+
     return (
       <CardList
-        jobs={jobs}
-        onCreate={onCreate}
+        items={items}
+        onAddToList={addToListItem}
         isExist={false}
       />
     );
@@ -16,8 +22,8 @@ class NasaSearchView extends React.PureComponent {
 }
 
 NasaSearchView.propTypes = {
-  jobs: PropTypes.instanceOf(Object).isRequired,
-  onCreate: PropTypes.func.isRequired,
+  items: PropTypes.instanceOf(Object).isRequired,
+  addToListItem: PropTypes.func.isRequired,
 };
 
 export default NasaSearchView;

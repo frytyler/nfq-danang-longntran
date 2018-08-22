@@ -4,7 +4,7 @@ import { Button, Row, Col } from 'reactstrap';
 
 import SearchBox from '../../../components/SearchBox';
 
-const JobAction = ({ onOpenModal, onSearch }) => (
+const ActionBar = ({ onOpenModal, onSearch }) => (
   <Row>
     <Col md="8">
       <SearchBox onSearch={onSearch} className="float-left" />
@@ -17,14 +17,14 @@ const JobAction = ({ onOpenModal, onSearch }) => (
   </Row>
 );
 
-JobAction.propTypes = {
+ActionBar.propTypes = {
   onOpenModal: PropTypes.func,
   onSearch: PropTypes.func,
 };
 
-JobAction.defaultProps = {
+ActionBar.defaultProps = {
   onOpenModal: () => {},
   onSearch: () => {},
 };
 
-export default JobAction;
+export default ActionBar;

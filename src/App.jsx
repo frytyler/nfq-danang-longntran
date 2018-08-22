@@ -11,6 +11,7 @@ import NasaItemsContainer from './pages/nasa-items';
 import NasaSearchContainer from './pages/nasa-search';
 
 import configureStore from './configureStore';
+import ErrorBoundary from './components/ErrorHandler';
 
 const history = createHistory();
 const store = configureStore({}, history);
@@ -19,7 +20,7 @@ function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <div>
+        <ErrorBoundary>
           <Header />
           <main className="mt-5">
             <Container>
@@ -30,7 +31,7 @@ function App() {
               </Switch>
             </Container>
           </main>
-        </div>
+        </ErrorBoundary>
       </ConnectedRouter>
     </Provider>
   );

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -40,21 +40,25 @@ class NasaSearchContainer extends React.PureComponent {
   }
 
   render() {
-    const { items } = this.props;
     return (
       <Fragment>
         <SearchBox onSearch={this.handleSearch} />
-        <NasaSearchView
-          jobs={items}
-          onCreate={this.handleCreateItem}
-        />
+        {this.props.items && (
+          <NasaSearchView
+            items={this.props.items}
+            addToListItem={this.handleCreateItem}
+          />
+        )}
       </Fragment>
     );
   }
 }
 
 NasaSearchContainer.propTypes = {
-  items: PropTypes.instanceOf(Object),
+  items: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
   dispatchSearch: PropTypes.func.isRequired,
   dispatchCreate: PropTypes.func.isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
@@ -75,7 +79,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
 const withReducer = injectReducer({ key: context, reducer });
 const withSaga = injectSaga({ key: context, saga });
 

@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
 import { FormGroup, Input } from 'reactstrap';
 
-import debounce from '../../utils/index';
+const ENTER_CODE = 13;
 
 class SearchBox extends React.PureComponent {
   onKeyUp = (event) => {
-    const ENTER_CODE = 13;
     const { values, onSearch } = this.props;
     if (event.keyCode === ENTER_CODE) {
       return onSearch(values);
     }
-    return debounce(() => onSearch(values), 1000);
+    return null;
   }
 
   render() {

@@ -10,39 +10,38 @@ import { filterSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { saveJob, removeJob, searchJob, updateJob } from './actions';
+import { saveItem, removeItem, updateItem, nasaFilterAction } from './actions';
 import NasaItemsView from './NasaItemsView';
 import { context } from './constants';
 
 export class NasaItemsContainer extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      show: false,
-    };
+  onSaveItem = (item) => {
+    const { dispatchUpdateItem, dispatchSaveItem } = this.props;
+    return item.key ? dispatchUpdateItem(item) : dispatchSaveItem(item);
   }
 
-  onSaveJob = (job) => {
-    const { dispatchUpdateJob, dispatchSaveJob } = this.props;
-    return job.key ? dispatchUpdateJob(job) : dispatchSaveJob(job);
+  handleRemoveItem = (item) => {
+    this.props.dispatchRemoveItem(item.key);
   }
 
-  onRemoveJob = (job) => {
-    this.props.dispatchRemoveJob(job);
+  addToFavorites = (item) => {
+    const newItem = item;
+    newItem.isFavorite = !item.isFavorite;
+    this.props.dispatchUpdateItem(newItem);
   }
 
-  onSearchJob = (criteria) => {
-    this.props.dispatchSearchJob(criteria);
+  executeSearch = (criteria) => {
+    this.props.dispatchSearch(criteria);
   }
 
   render() {
     return (
       <NasaItemsView
-        show={this.state.show}
-        onSubmit={this.onSaveJob}
-        jobs={this.props.items}
-        handleRemoveJob={this.onRemoveJob}
-        handleSearchJob={this.onSearchJob}
+        items={this.props.items}
+        onSubmit={this.onSaveItem}
+        onRemove={this.handleRemoveItem}
+        onSearch={this.executeSearch}
+        onAddToFavorites={this.addToFavorites}
       />
     );
   }
@@ -50,17 +49,17 @@ export class NasaItemsContainer extends React.PureComponent {
 
 NasaItemsContainer.propTypes = {
   items: PropTypes.instanceOf(Object).isRequired,
-  dispatchSaveJob: PropTypes.func.isRequired,
-  dispatchUpdateJob: PropTypes.func.isRequired,
-  dispatchRemoveJob: PropTypes.func.isRequired,
-  dispatchSearchJob: PropTypes.func.isRequired,
+  dispatchSaveItem: PropTypes.func.isRequired,
+  dispatchUpdateItem: PropTypes.func.isRequired,
+  dispatchRemoveItem: PropTypes.func.isRequired,
+  dispatchSearch: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  dispatchSaveJob: job => dispatch(saveJob(job)),
-  dispatchUpdateJob: job => dispatch(updateJob(job)),
-  dispatchRemoveJob: job => dispatch(removeJob(job)),
-  dispatchSearchJob: criteria => dispatch(searchJob(criteria)),
+  dispatchSaveItem: item => dispatch(saveItem(item)),
+  dispatchUpdateItem: item => dispatch(updateItem(item)),
+  dispatchRemoveItem: item => dispatch(removeItem(item)),
+  dispatchSearch: criteria => dispatch(nasaFilterAction.request(criteria)),
 });
 
 const mapStateToProps = createStructuredSelector({

@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, Label, Input, FormGroup } from 'reactstrap';
 import { withFormik } from 'formik';
 
-import jobValidation from './validation';
+import validate from './validation';
 
 class NasaItemModal extends React.PureComponent {
-  isEditing = () => this.props.job && this.props.job.key;
+  isEditing = () => this.props.item && this.props.item.key;
 
   renderModalTitle = () => {
     if (this.isEditing()) {
-      return 'Update job';
+      return 'Update item';
     }
-    return 'Create new job';
+    return 'Create new item';
   }
 
   render() {
@@ -32,14 +32,14 @@ class NasaItemModal extends React.PureComponent {
           {this.renderModalTitle()}
         </ModalHeader>
         <ModalBody>
-          <Form id="jobForm" onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label>Title</Label>
               <Input
                 type="text"
                 name="title"
                 value={values.title}
-                placeholder="Job title"
+                placeholder="Item title"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -51,7 +51,7 @@ class NasaItemModal extends React.PureComponent {
                 name="description"
                 value={values.description}
                 type="textarea"
-                placeholder="Job description"
+                placeholder="Item description"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -95,7 +95,7 @@ class NasaItemModal extends React.PureComponent {
 
 NasaItemModal.propTypes = {
   active: PropTypes.bool,
-  job: PropTypes.instanceOf(Object).isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
   /*
   * Formik props
   * */
@@ -114,17 +114,17 @@ NasaItemModal.defaultProps = {
   active: false,
 };
 
-const enhanceJobForm = withFormik({
+const enhanceSaveItemForm = withFormik({
   enableReinitialize: true,
-  mapPropsToValues: props => props.job,
-  validate: jobValidation,
+  mapPropsToValues: props => props.item,
+  validate,
   handleSubmit: (values, { props, setSubmitting, resetForm }) => {
-    const job = Object.assign({}, props.job, values);
-    props.onSubmit(job);
+    const item = Object.assign({}, props.item, values);
+    props.onSubmit(item);
     resetForm({});
     setSubmitting(false);
   },
-  displayName: 'CreateJobForm',
+  displayName: 'SaveItemForm',
 })(NasaItemModal);
 
-export default enhanceJobForm;
+export default enhanceSaveItemForm;

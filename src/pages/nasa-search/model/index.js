@@ -1,8 +1,8 @@
-import { List, Record } from 'immutable';
+import { Record } from 'immutable';
 
 const NasaSearchState = new Record({
   criteria: '',
-  data: new List(),
+  data: false,
 });
 
 export default NasaSearchState;
