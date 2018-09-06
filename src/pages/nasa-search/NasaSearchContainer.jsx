@@ -14,8 +14,8 @@ import reducer from './reducer';
 import saga from './saga';
 
 import SearchBox from '../../components/SearchBox';
-import NasaSearchView from './NasaSearchView';
 import { context } from './constants';
+import CardList from '../../components/Card/CardList';
 
 class NasaSearchContainer extends React.PureComponent {
   componentDidMount() {
@@ -44,9 +44,10 @@ class NasaSearchContainer extends React.PureComponent {
       <Fragment>
         <SearchBox onSearch={this.handleSearch} />
         {this.props.items && (
-          <NasaSearchView
+          <CardList
             items={this.props.items}
-            addToListItem={this.handleCreateItem}
+            onAddToList={this.handleCreateItem}
+            isExist={false}
           />
         )}
       </Fragment>
@@ -58,15 +59,11 @@ NasaSearchContainer.propTypes = {
   items: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.array,
-  ]),
+  ]).isRequired,
   dispatchSearch: PropTypes.func.isRequired,
   dispatchCreate: PropTypes.func.isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
-};
-
-NasaSearchContainer.defaultProps = {
-  items: {},
 };
 
 const mapStateToProps = createStructuredSelector({

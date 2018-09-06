@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
@@ -11,14 +12,34 @@ import reducer from './reducer';
 import saga from './saga';
 
 import { saveItem, removeItem, updateItem, nasaFilterAction } from './actions';
-import NasaItemsView from './NasaItemsView';
 import { context } from './constants';
+import ActionBar from './components/ActionBar';
+import CardList from '../../components/Card/CardList';
+import NasaModal from './../../components/NasaModal';
+import CreateForm from './components/CreateItemForm';
 
+/* eslint-disable */
 export class NasaItemsContainer extends React.PureComponent {
+  initialState = {
+    item: {
+      title: '',
+      description: '',
+    },
+    activeModal: false,
+  }
+  state = this.initialState
+
   onSaveItem = (item) => {
     const { dispatchUpdateItem, dispatchSaveItem } = this.props;
-    return item.key ? dispatchUpdateItem(item) : dispatchSaveItem(item);
+    item.key ? dispatchUpdateItem(item) : dispatchSaveItem(item);
+    this.resetState();
   }
+
+  resetState = () =>
+    this.setState(this.initialState)
+
+  toggleModal = () =>
+    this.setState(({ activeModal }) => ({ activeModal: !activeModal }))
 
   handleRemoveItem = (item) => {
     this.props.dispatchRemoveItem(item.key);
@@ -30,19 +51,73 @@ export class NasaItemsContainer extends React.PureComponent {
     this.props.dispatchUpdateItem(newItem);
   }
 
-  executeSearch = (criteria) => {
-    this.props.dispatchSearch(criteria);
+  executeSearch = criteria => this.props.dispatchSearch(criteria);
+
+  updateItem = item =>
+    this.setState(() => ({ item }), () => this.toggleModal())
+
+  createNewItem = () =>
+    this.setState(
+      () => this.initialState,
+      () => this.toggleModal(),
+    )
+
+  isEditing = () => this.state.item && this.state.item.key;
+
+  renderModalTitle = () => {
+    if (this.isEditing()) {
+      return 'Update item';
+    }
+    return 'Create new item';
   }
 
   render() {
+    const { items } = this.props;
     return (
-      <NasaItemsView
-        items={this.props.items}
-        onSubmit={this.onSaveItem}
-        onRemove={this.handleRemoveItem}
-        onSearch={this.executeSearch}
-        onAddToFavorites={this.addToFavorites}
-      />
+      <Fragment>
+        <ActionBar
+          onOpenModal={this.createNewItem}
+          onSearch={this.executeSearch}
+        />
+        <CardList
+          items={items || []}
+          onRemove={this.handleRemoveItem}
+          onUpdate={this.updateItem}
+          onSelectFavorite={this.addToFavorites}
+        />
+        <NasaModal
+          initialOn={this.state.activeModal}
+          onToggleModal={this.toggleModal}
+        >
+          {() => (
+            <Fragment>
+              <ModalHeader>{this.renderModalTitle()}</ModalHeader>
+              <ModalBody>
+                <CreateForm
+                  item={this.state.item}
+                  onSubmit={this.onSaveItem}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="primary"
+                  type="submit"
+                  form="save-item-form"
+                >
+                  Save
+                </Button>
+                <Button
+                  type="button"
+                  color="secondary"
+                  onClick={this.toggleModal}
+                >
+                  Close
+                </Button>
+              </ModalFooter>
+            </Fragment>
+          )}
+        </NasaModal>
+      </Fragment>
     );
   }
 }
