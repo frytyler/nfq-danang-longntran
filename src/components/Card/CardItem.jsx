@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 import convertTimeStampToDate from '../../utils/dateTimeUtils';
-import {
-  CardTextEllipsis,
-  FullHeightCard,
-  CardFooterWrapper,
-  ListGroupItemWrapper,
-  CardImgWrapper,
-} from './CardItem.style';
+import Button from '../Button';
 
 class CardItem extends React.PureComponent {
   getFavoriteClass = () => {
@@ -40,24 +33,30 @@ class CardItem extends React.PureComponent {
     const { isExist } = this.props;
     if (isExist) {
       return (
-        <ul className="list-group flex-row list-group-flush">
-          <ListGroupItemWrapper onClick={this.addFavorite}>
-            <span className={this.getFavoriteClass()} />
-          </ListGroupItemWrapper>
-          <ListGroupItemWrapper onClick={this.update}>
-            <span className="icon-pencil" />
-          </ListGroupItemWrapper>
-          <ListGroupItemWrapper onClick={this.remove}>
-            <span className="icon-bin" />
-          </ListGroupItemWrapper>
+        <ul className="list-items">
+          <li className="list-items__item">
+            <button onClick={this.addFavorite}>
+              <span className={this.getFavoriteClass()} />
+            </button>
+          </li>
+          <li className="list-items__item">
+            <button onClick={this.update}>
+              <span className="icon-pencil" />
+            </button>
+          </li>
+          <li className="list-items__item">
+            <button onClick={this.remove}>
+              <span className="icon-bin" />
+            </button>
+          </li>
         </ul>
       );
     }
     return (
-      <div className="list-group list-group-flush">
-        <ListGroupItemWrapper className="text-primary" onClick={this.addToList}>
+      <div className="text-center">
+        <Button classes="btn btn-default no-border" style={{ backgroundColor: 'transparent' }} onClick={this.addToList}>
           <span className="icon-plus" />{' Add to list'}
-        </ListGroupItemWrapper>
+        </Button>
       </div>
     );
   }
@@ -69,19 +68,17 @@ class CardItem extends React.PureComponent {
       },
     } = this.props;
     return (
-      <Col md="4" sm="6" className="mb-3">
-        <FullHeightCard className="shadow-sm bg-white rounded">
-          <CardImgWrapper width="100%" src={mediaFile} alt={title} />
-          <CardBody>
-            <CardTitle>{title}</CardTitle>
-            <CardSubtitle className="text-muted">{convertTimeStampToDate(createdAt)}</CardSubtitle>
-            <CardTextEllipsis>{description}</CardTextEllipsis>
-          </CardBody>
-          <CardFooterWrapper>
-            {this.renderCardFooter()}
-          </CardFooterWrapper>
-        </FullHeightCard>
-      </Col>
+      <div className="card-item">
+        <img className="card-item__head" src={mediaFile} alt={title} />
+        <div className="card-item__body">
+          <h5 className="card-item__title">{title}</h5>
+          <h6 className="card-item__title--meta">{convertTimeStampToDate(createdAt)}</h6>
+          <div className="card-item__text">{description}</div>
+        </div>
+        <div className="card-item-actions">
+          {this.renderCardFooter()}
+        </div>
+      </div>
     );
   }
 }

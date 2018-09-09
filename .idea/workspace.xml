@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56b50f98-b760-4d14-9413-7e8e8c47492a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/style/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardItem.style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/CardList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/CardList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NasaModal/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NasaModal/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBox/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBox/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/nasa-items/NasaItemsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/nasa-items/NasaItemsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/nasa-items/components/CreateItemForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/nasa-items/components/CreateItemForm.jsx" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1645798533">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="21" />
+          <entry key="js" value="11" />
+          <entry key="json" value="1" />
+          <entry key="jsx" value="31" />
+          <entry key="rnc" value="1" />
+          <entry key="ts" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="21" />
+          <entry key="JSON" value="1" />
+          <entry key="JSX Harmony" value="31" />
+          <entry key="JavaScript" value="11" />
+          <entry key="RNG Compact" value="1" />
+          <entry key="TypeScript" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="3256" />
+          <entry key="js" value="618" />
+          <entry key="json" value="8" />
+          <entry key="jsx" value="6173" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="3256" />
+          <entry key="JSON" value="8" />
+          <entry key="JSX Harmony" value="6173" />
+          <entry key="JavaScript" value="618" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="13" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.6" value="8" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="13" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="ESLintLanguageService" value="13" />
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/style/base.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/NasaModal/index.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-492">
+              <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/NasaModal/NasaModal.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Card/CardItem.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-354">
+              <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/NasaItemsContainer.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Card/CardList.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="89">
+              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Button/index.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Button/Button.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Card/CardItem.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/style/utilities.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>SAVE_JOB</find>
+      <find>_actions</find>
+      <find>onSubmit</find>
+      <find>onSave</find>
+      <find>handleCloseModal</find>
+      <find>handleUpdate</find>
+      <find>item</find>
+      <find>onOpenModal</find>
+      <find>onSaveItem</find>
+      <find>submitForm</find>
+      <find>formRe</find>
+      <find>handleSubmit</find>
+      <find>values.</find>
+      <find>title</find>
+      <find>description</find>
+      <find>touched</find>
+      <find>card-item__text</find>
+      <find>class</find>
+      <find>navbar-brand</find>
+      <find>action-bar__right</find>
+      <find>6em</find>
+      <find>|</find>
+      <find>card-item__title-meta</find>
+      <find>butt</find>
+      <find>react</find>
+      <find>reactstr</find>
+      <find>reactstrap</find>
+      <find>aria-role</find>
+      <find>rows=&quot;4&quot;</find>
+      <find>NasaModal</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>className</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/SearchForm.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Footer/index.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/Job.css" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/JobActions.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Pagination/index.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/JobModal.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/CreateJobForm.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/constants.js" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/Pagination.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/actions.js" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/JobList.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/JobsView.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/components/JobItem.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/JobsContainer.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/jobs/saga.js" />
+        <option value="$PROJECT_DIR$/src/firebase/service.js" />
+        <option value="$PROJECT_DIR$/src/services/jobService.js" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-search/context.js" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/NasaItemsView.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-search/NasaSearchContainer.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/context.js" />
+        <option value="$PROJECT_DIR$/src/components/Card/CardList.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Card/CardList.css" />
+        <option value="$PROJECT_DIR$/src/components/Card/CardItem.style.js" />
+        <option value="$PROJECT_DIR$/src/components/Button/index.js" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.css" />
+        <option value="$PROJECT_DIR$/src/components/From/Input.jsx" />
+        <option value="$PROJECT_DIR$/src/components/From/Input/Input.css" />
+        <option value="$PROJECT_DIR$/src/components/SearchBox/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Header/index.jsx" />
+        <option value="$PROJECT_DIR$/src/assets/style/var.css" />
+        <option value="$PROJECT_DIR$/src/components/Header/Nav.css" />
+        <option value="$PROJECT_DIR$/src/index.jsx" />
+        <option value="$PROJECT_DIR$/src/assets/style/index.css" />
+        <option value="$PROJECT_DIR$/src/components/Modal/Modal.css" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/App.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Modal/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/From/Input/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/From/Textarea/index.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/components/CreateItemForm.jsx" />
+        <option value="$PROJECT_DIR$/src/components/NasaModal/index.jsx" />
+        <option value="$PROJECT_DIR$/src/assets/style/base.css" />
+        <option value="$PROJECT_DIR$/src/components/NasaModal/NasaModal.css" />
+        <option value="$PROJECT_DIR$/src/pages/nasa-items/NasaItemsContainer.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Button/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Button/Button.css" />
+        <option value="$PROJECT_DIR$/src/components/Card/CardItem.jsx" />
+        <option value="$PROJECT_DIR$/src/assets/style/utilities.css" />
+        <option value="$PROJECT_DIR$/src/components/Card/CardItem.css" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="23" />
+    <option name="width" value="1436" />
+    <option name="height" value="877" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Card" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="From" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="NasaModal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="nasa-items" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="Card&#9;FILE&#9;file:///Users/longntran/Projects/nfq/assignment-01/src/components/Card/CardItem.css&#10;app&#9;FILE&#9;file:///Users/longntran/Projects/nfq/assignment-01/src/App.jsx&#10;sag&#9;FILE&#9;file:///Users/longntran/Projects/nfq/assignment-01/src/pages/jobs/saga.js" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\tnlong\AppData\Roaming\npm\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.CSS" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/From/Input" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/jobs/components" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56b50f98-b760-4d14-9413-7e8e8c47492a" name="Default" comment="" />
+      <created>1532353305944</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532353305944</updated>
+      <workItem from="1532353307094" duration="3465000" />
+      <workItem from="1532357033973" duration="8673000" />
+      <workItem from="1532439117785" duration="32000" />
+      <workItem from="1532439210266" duration="2424000" />
+      <workItem from="1532445876908" duration="4534000" />
+      <workItem from="1532451180592" duration="1615000" />
+      <workItem from="1532563211671" duration="18730000" />
+      <workItem from="1532827991923" duration="22328000" />
+      <workItem from="1532856387370" duration="12673000" />
+      <workItem from="1533051445606" duration="6674000" />
+      <workItem from="1533373301122" duration="4417000" />
+      <workItem from="1533484834635" duration="16185000" />
+      <workItem from="1533815996384" duration="1132000" />
+      <workItem from="1533821781741" duration="757000" />
+      <workItem from="1535126127486" duration="588000" />
+      <workItem from="1535192322999" duration="588000" />
+      <workItem from="1535203618030" duration="590000" />
+      <workItem from="1535767976684" duration="608000" />
+      <workItem from="1535771539194" duration="2487000" />
+      <workItem from="1535819421908" duration="1017000" />
+      <workItem from="1535936779341" duration="4529000" />
+      <workItem from="1535951528162" duration="2358000" />
+      <workItem from="1536246889650" duration="4356000" />
+      <workItem from="1536329863917" duration="2635000" />
+      <workItem from="1536386272414" duration="10687000" />
+      <workItem from="1536414924856" duration="3167000" />
+      <workItem from="1536475734482" duration="4624000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="53369000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4" y="23" width="1436" height="877" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24876325" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32769832" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32909784" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.49154747" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="TypeScript" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/components/JobList.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/components/JobItem.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/firebase/default.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/JobsContainer.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/JobsView.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/firebase/service.js" />
+    <entry file="file://$PROJECT_DIR$/src/firebase/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/jobService.js" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/actions.js" />
+    <entry file="file://$PROJECT_DIR$/src/pages/jobs/saga.js" />
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-search/context.js" />
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/NasaItemsView.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/js/0.6290730e.chunk.js" />
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/NasaItemModal.jsx" />
+    <entry file="file://$PROJECT_DIR$/node_modules/reactstrap/src/ModalFooter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/validation/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-search/NasaSearchView.jsx" />
+    <entry file="file://$PROJECT_DIR$/node_modules/immutable/dist/immutable.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-search/NasaSearchContainer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Card/CardList.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Card/CardItem.style.js" />
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SearchBox/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/Nav.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/style/var.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react/cjs/react.development.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="1421" selection-start-line="1421" selection-end-line="1421" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Modal/Modal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/From/Input/Input.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="17" lean-forward="true" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Modal/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/From/Textarea/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/From/Input/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/components/ActionBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/components/CreateItemForm.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/style/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="40" column="1" lean-forward="true" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Button/Button.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Button/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NasaModal/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-492">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NasaModal/NasaModal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/nasa-items/NasaItemsContainer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Card/CardList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="506" column="16" selection-start-line="506" selection-start-column="16" selection-end-line="506" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/style/utilities.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Card/CardItem.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Card/CardItem.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-354">
+          <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

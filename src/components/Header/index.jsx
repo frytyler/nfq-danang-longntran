@@ -1,50 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
 
-class Header extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: true,
-    };
-  }
-
-  toggleNav = () => {
-    this.setState(({ isOpen }) => ({
-      isOpen: !isOpen,
-    }));
-  }
-
-  render() {
-    return (
-      <Navbar dark color="dark" expand="md">
-        <NavbarBrand tag={Link} to="/">NFQ DaNang</NavbarBrand>
-        <NavbarToggler onClick={this.toggleNav} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/nasa-items">Items</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/nasa-search">Search</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/about">About</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    );
-  }
+function Nav() {
+  return (
+    <nav className="nav-fixed-top" id="nav">
+      <Link to="/" className="navbar-brand">NFQ Da Nang</Link>
+      <div className="menu">
+        <ul className="nav-items">
+          <li className="nav-item">
+            <Link to="/nasa-items" className="nav-link">Items</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/nasa-search" className="nav-link">Search</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
 }
 
-export default Header;
+export default Nav;

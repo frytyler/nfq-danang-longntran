@@ -1,0 +1,15 @@
+.mt-5 {
+    margin-top: 3rem!important;
+}
+
+.text-danger {
+    color: var(--red);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.no-border {
+    border: 0 !important;
+}

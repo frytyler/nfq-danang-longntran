@@ -1,0 +1,123 @@
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 10px;
+}
+
+.card-item {
+    border-radius: .25rem;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .2);
+    display: grid;
+    grid-template-rows: 230px auto 50px;
+    overflow: hidden;
+}
+
+.card-item > .card-item__head {
+    border-radius: 2px 2px 0 0;
+    object-fit: cover;
+    height: 230px;
+}
+
+.card-item > .card-item-actions {
+    border-top: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+.card-item > .card-item__body {
+    padding: 24px;
+    overflow: hidden;
+}
+
+.card-item .card-item__title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .85);
+    margin-top: 0;
+    margin-bottom: .35em;
+}
+
+.card-item .card-item__title--meta {
+    margin-top: .25em;
+    margin-bottom: .75em;
+    color: rgba(0, 0, 0, .45);
+}
+
+.card-item .card-item__text {
+    color: rgba(0, 0, 0, .45);
+    font-size: .875em;
+    overflow: hidden;
+    position: relative;
+    max-height: 7em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+.card-item .card-item__text::before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.card-item .card-item__text::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+}
+
+.card-item-actions {
+    display: grid;
+    align-items: center;
+}
+
+.list-items {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.list-items > .list-items__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.list-items__item::after {
+    position: absolute;
+    right: 0;
+    opacity: 0.2;
+    content: '|';
+}
+
+.list-items > .list-items__item:last-child::after {
+    content: '';
+}
+
+.list-items__item > button {
+    border: 0;
+    border-radius: 4px;
+    color: #2196f3;
+    background: transparent;
+    padding: 7px 8px;
+    min-width: 64px;
+    font-size: 0.8125rem;
+    min-height: 32px;
+}
+
+.list-items__item > button:focus {
+    outline: none;
+}
+
+.list-items__item > button:hover {
+    background-color: rgba(33, 150, 243, 0.08);
+}

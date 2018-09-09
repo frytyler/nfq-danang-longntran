@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Container } from 'reactstrap';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -23,13 +22,13 @@ function App() {
         <ErrorBoundary>
           <Header />
           <main className="mt-5">
-            <Container>
+            <div className="container">
               <Switch>
                 <Route exact path="/nasa-items" component={NasaItemsContainer} />
                 <Route path="/nasa-search/:query?" component={NasaSearchContainer} />
                 <Redirect to="/nasa-items" />
               </Switch>
-            </Container>
+            </div>
           </main>
         </ErrorBoundary>
       </ConnectedRouter>

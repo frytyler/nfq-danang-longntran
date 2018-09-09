@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import injectReducer from './../../utils/injectReducer';
 import injectSaga from './../../utils/injectSaga';
@@ -17,6 +16,7 @@ import ActionBar from './components/ActionBar';
 import CardList from '../../components/Card/CardList';
 import NasaModal from './../../components/NasaModal';
 import CreateForm from './components/CreateItemForm';
+import Button from '../../components/Button';
 
 /* eslint-disable */
 export class NasaItemsContainer extends React.PureComponent {
@@ -91,29 +91,31 @@ export class NasaItemsContainer extends React.PureComponent {
         >
           {() => (
             <Fragment>
-              <ModalHeader>{this.renderModalTitle()}</ModalHeader>
-              <ModalBody>
-                <CreateForm
-                  item={this.state.item}
-                  onSubmit={this.onSaveItem}
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  color="primary"
-                  type="submit"
-                  form="save-item-form"
-                >
-                  Save
-                </Button>
-                <Button
-                  type="button"
-                  color="secondary"
-                  onClick={this.toggleModal}
-                >
-                  Close
-                </Button>
-              </ModalFooter>
+              <h2>{this.renderModalTitle()}</h2>
+              <CreateForm
+                item={this.state.item}
+                onSubmit={this.onSaveItem}
+              />
+              <div className="modal-footer">
+                <div>
+                  <Button
+                    name="save"
+                    classes="btn-primary"
+                    type="submit"
+                    form="save-item-form"
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    name="close"
+                    type="button"
+                    color="secondary"
+                    onClick={this.toggleModal}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
             </Fragment>
           )}
         </NasaModal>

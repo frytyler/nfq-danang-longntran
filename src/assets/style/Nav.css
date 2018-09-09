@@ -1,0 +1,45 @@
+#nav {
+    background: #2196f3;
+    color: var(--white);
+    display: grid;
+    grid-template-columns: minmax(100px, 200px) 1fr;
+    padding: .5rem 1rem;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#nav > .menu {
+    justify-self: end;
+}
+
+.nav-fixed-top {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.nav-link {
+    color: var(--white);
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.navbar-brand {
+    color: var(--white);
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.nav-items {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+}

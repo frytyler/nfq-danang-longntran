@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
-import { FormGroup, Input } from 'reactstrap';
+
+import Input from '../From/Input';
 
 const ENTER_CODE = 13;
 
@@ -17,17 +18,16 @@ class SearchBox extends React.PureComponent {
   render() {
     const { handleChange, values } = this.props;
     return (
-      <FormGroup>
-        <Input
-          aria-label="criteria"
-          name="criteria"
-          value={values.criteria}
-          onKeyUp={this.onKeyUp}
-          onChange={handleChange}
-          type="text"
-          placeholder="Enter to search immediately"
-        />
-      </FormGroup>
+      <Input
+        classes="form-input--lg"
+        name="criteria"
+        id="criteria"
+        value={values.criteria}
+        onKeyUp={this.onKeyUp}
+        onChange={handleChange}
+        type="text"
+        placeholder="Enter to search immediately"
+      />
     );
   }
 }

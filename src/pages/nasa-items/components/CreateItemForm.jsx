@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, Input, FormGroup } from 'reactstrap';
 import { withFormik } from 'formik';
 
 import itemValidation from '../validation';
+import Input from '../../../components/From/Input';
+import TextArea from '../../../components/From/Textarea';
 
 class CreateItemForm extends React.PureComponent {
   render() {
@@ -18,11 +19,11 @@ class CreateItemForm extends React.PureComponent {
     } = this.props;
 
     return (
-      <Form id="save-item-form" onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label>Title</Label>
+      <form id="save-item-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className="form-label" htmlFor="title">Title</label>
           <Input
-            type="text"
+            type="Text"
             name="title"
             value={values.title || ''}
             placeholder="Item title"
@@ -30,20 +31,20 @@ class CreateItemForm extends React.PureComponent {
             onBlur={handleBlur}
           />
           {touched.title && errors.title && <span className="text-danger">{errors.title}</span>}
-        </FormGroup>
-        <FormGroup>
-          <Label>Description</Label>
-          <Input
+        </div>
+        <div className="form-group">
+          <label className="form-label" htmlFor="description">Description</label>
+          <TextArea
             name="description"
             value={values.description || ''}
-            type="textarea"
+            rows={5}
             placeholder="Item description"
             onChange={handleChange}
             onBlur={handleBlur}
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>Preview</Label>
+        </div>
+        <div className="form-group">
+          <label className="form-label" htmlFor="mediaFile">Preview</label>
           <Input
             type="file"
             name="mediaFile"
@@ -54,8 +55,8 @@ class CreateItemForm extends React.PureComponent {
             placeholder="Media file"
           />
           {touched.mediaFile && errors.mediaFile && <span className="text-danger">{errors.mediaFile}</span>}
-        </FormGroup>
-      </Form>
+        </div>
+      </form>
     );
   }
 }

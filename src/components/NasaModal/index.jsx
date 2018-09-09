@@ -1,32 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from 'reactstrap';
+import { SkyLightStateless as Modal } from 'react-skylight';
 
 /* eslint-disable */
 class NasaModal extends React.PureComponent {
   static defaultProps = {
     initialOn: false,
-    onToggleModal: () => {}
+    onToggleModal: () => {},
   }
-  initialState = { active: this.props.initialOn }
-  state = this.initialState
 
   static getDerivedStateFromProps(props) {
     return {
       active: props.initialOn,
     };
   }
+  initialState = { active: this.props.initialOn }
+  state = this.initialState
 
-  getStateHelper = () => {
-    return {
-      active: this.state.active,
-    }
-  }
+  getStateHelper = () => ({
+    active: this.state.active,
+  })
+
+  toggleModal = () =>
+    this.setState(
+      ({ active }) => ({ active: !active }),
+      () => this.props.onToggleModal(this.state.active),
+    )
 
   render() {
     const { active } = this.state;
     return (
-      <Modal size="lg" isOpen={active} toggle={this.props.onToggleModal}>
+      <Modal
+        isVisible={active}
+        onCloseClicked={this.toggleModal}
+      >
         {this.props.children(this.getStateHelper())}
       </Modal>
     );
@@ -36,6 +43,7 @@ class NasaModal extends React.PureComponent {
 NasaModal.propTypes = {
   initialOn: PropTypes.bool,
   onToggleModal: PropTypes.func,
+  children: PropTypes.func.isRequired,
 };
 
 export default NasaModal;

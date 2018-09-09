@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row } from 'reactstrap';
 
 import CardItem from './CardItem';
 
@@ -21,9 +20,9 @@ const CardList = ({
   ));
 
   return (
-    <Row>
+    <div className="card-list">
       {cardListView}
-    </Row>
+    </div>
   );
 };
 
