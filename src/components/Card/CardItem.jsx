@@ -75,7 +75,7 @@ class CardItem extends React.PureComponent {
           <h6 className="card-item__title--meta">{convertTimeStampToDate(createdAt)}</h6>
           <div className="card-item__text">{description}</div>
         </div>
-        <div className="card-item-actions">
+        <div className="card-item__actions">
           {this.renderCardFooter()}
         </div>
       </div>

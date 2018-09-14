@@ -1,0 +1,15 @@
+.action-bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &__right {
+    justify-self: right;
+  }
+}
+
+.action-bar .form-group {
+  margin-bottom: 0 !important;
+}

@@ -10,9 +10,10 @@
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
+    --black: #000;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #007bff;
+    --primary: #1890ff;
     --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
@@ -21,3 +22,7 @@
     --light: #f8f9fa;
     --dark: #343a40;
 }
+
+$btn-border-color: #d9d9d9;
+$btn-hover-color: #40a9ff;
+$btn-primary-hover-color: #1976d2;

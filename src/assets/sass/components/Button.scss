@@ -1,0 +1,31 @@
+.btn {
+  background-color: var(--white);
+  border: 1px solid $btn-border-color;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1.4;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+  color: rgba(var(--black), .65);
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+
+  &.btn-primary {
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+
+    &:hover {
+      background-color: $btn-primary-hover-color;
+    }
+  }
+
+  &.btn-default {
+    color: $btn-hover-color;
+    border-color: $btn-hover-color;
+  }
+}

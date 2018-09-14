@@ -1,0 +1,124 @@
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 350px));
+  grid-gap: 10px;
+}
+
+.card-item {
+  border-radius: .25rem;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .2);
+  display: grid;
+  grid-template-rows: 230px auto 50px;
+  overflow: hidden;
+
+  & > &__head {
+    border-radius: 2px 2px 0 0;
+    object-fit: cover;
+    height: 230px;
+  }
+
+  & > &__actions {
+    display: grid;
+    align-items: center;
+    border-top: 1px solid #e8e8e8;
+    background: #fafafa;
+  }
+
+  & > &__body {
+    padding: 24px;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .85);
+    margin-top: 0;
+    margin-bottom: .35em;
+  }
+
+  &__title--meta {
+    margin-top: .25em;
+    margin-bottom: .75em;
+    color: rgba(0, 0, 0, .45);
+  }
+
+  &__text {
+    color: rgba(0, 0, 0, .45);
+    font-size: .875em;
+    overflow: hidden;
+    position: relative;
+    max-height: 7em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+
+    &::before {
+      content: '...';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 1em;
+      height: 1em;
+      margin-top: 0.2em;
+      background: white;
+    }
+  }
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    &::after {
+      content: '|';
+      position: absolute;
+      right: 0;
+      opacity: 0.2;
+    }
+
+    & > button {
+      border: 0;
+      border-radius: 4px;
+      color: #2196f3;
+      background: transparent;
+      padding: 7px 8px;
+      min-width: 64px;
+      font-size: 0.8125rem;
+      min-height: 32px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: rgba(33, 150, 243, 0.08);
+      }
+    }
+  }
+
+  &__item {
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import './assets/style/index.css';
+import './assets/styles/index.css';
 
 const rootNode = document.getElementById('root');
 ReactDOM.render(<App />, rootNode);
