@@ -7,13 +7,13 @@
 *,
 html,
 body {
-    font-family: sans-serif;
-    font-size: 16px;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 
 body, html {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -21,35 +21,17 @@ html {
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-input {
-    padding-bottom: 8px;
-}
-
-.form-label {
-    white-space: nowrap;
-    display: block;
-    overflow: hidden;
-    vertical-align: middle;
-    line-height: 1.3;
-    padding-bottom: 8px;
-    text-align: left;
+  color: $link-default-color;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 textarea,
 .textarea {
-    min-height: inherit;
-    height: auto !important;
+  min-height: inherit;
+  height: auto !important;
 }
