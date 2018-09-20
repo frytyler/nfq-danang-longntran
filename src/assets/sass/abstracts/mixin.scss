@@ -1,0 +1,22 @@
+$extra-small-screen: 575.98px;
+$small-screen: 767.98px;
+$medium-screen: 991.98px;
+$large-screen: 1199.98px;
+
+@mixin media-breakpoint-up($screen) {
+  @if $screen == 'sm' {
+    @media (min-width: $small-screen) {
+      @content;
+    }
+  }
+  @else if $screen == 'md' {
+    @media (min-width: $medium-screen) {
+      @content;
+    }
+  }
+  @else if $screen == 'lg' {
+    @media (min-width: $large-screen) {
+      @content;
+    }
+  }
+}
