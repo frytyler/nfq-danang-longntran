@@ -26,41 +26,38 @@ export class NasaItemsContainer extends React.PureComponent {
       description: '',
     },
     activeModal: false,
-  }
-  state = this.initialState
+  };
+  state = this.initialState;
 
-  onSaveItem = (item) => {
+  onSaveItem = item => {
     const { dispatchUpdateItem, dispatchSaveItem } = this.props;
     item.key ? dispatchUpdateItem(item) : dispatchSaveItem(item);
     this.resetState();
-  }
+  };
 
-  resetState = () =>
-    this.setState(this.initialState)
+  resetState = () => this.setState(this.initialState);
 
-  toggleModal = () =>
-    this.setState(({ activeModal }) => ({ activeModal: !activeModal }))
+  toggleModal = () => {
+    return this.setState(({ activeModal }) => ({ activeModal: !activeModal }));
+  };
 
-  handleRemoveItem = (item) => {
+  handleRemoveItem = item => {
     this.props.dispatchRemoveItem(item.key);
-  }
+  };
 
-  addToFavorites = (item) => {
+  addToFavorites = item => {
     const newItem = item;
     newItem.isFavorite = !item.isFavorite;
     this.props.dispatchUpdateItem(newItem);
-  }
+  };
 
   executeSearch = criteria => this.props.dispatchSearch(criteria);
 
   updateItem = item =>
-    this.setState(() => ({ item }), () => this.toggleModal())
+    this.setState(() => ({ item }), () => this.toggleModal());
 
   createNewItem = () =>
-    this.setState(
-      () => this.initialState,
-      () => this.toggleModal(),
-    )
+    this.setState(() => this.initialState, () => this.toggleModal());
 
   isEditing = () => this.state.item && this.state.item.key;
 
@@ -69,7 +66,7 @@ export class NasaItemsContainer extends React.PureComponent {
       return 'Update item';
     }
     return 'Create new item';
-  }
+  };
 
   render() {
     const { items } = this.props;
@@ -92,10 +89,7 @@ export class NasaItemsContainer extends React.PureComponent {
           {() => (
             <Fragment>
               <h2>{this.renderModalTitle()}</h2>
-              <CreateForm
-                item={this.state.item}
-                onSubmit={this.onSaveItem}
-              />
+              <CreateForm item={this.state.item} onSubmit={this.onSaveItem} />
               <div className="modal-footer">
                 <div>
                   <Button

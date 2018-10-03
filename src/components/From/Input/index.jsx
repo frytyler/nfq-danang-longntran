@@ -10,7 +10,7 @@ class Input extends React.PureComponent {
     onBlur: () => {},
     onKeyUp: () => {},
     onChange: () => {},
-  }
+  };
 
   render() {
     const {

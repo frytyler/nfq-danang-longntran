@@ -4,81 +4,99 @@ import PropTypes from 'prop-types';
 import convertTimeStampToDate from '../../utils/dateTimeUtils';
 import Button from '../Button';
 
+import {
+  Main,
+  Header,
+  Body,
+  Title,
+  Meta,
+  Content,
+  Actions,
+  List,
+  Item,
+  IconButton,
+  Icon,
+  Center,
+} from './CardItem.styled';
+
 class CardItem extends React.PureComponent {
   getFavoriteClass = () => {
-    const { data: { isFavorite = false } } = this.props;
+    const {
+      data: { isFavorite = false },
+    } = this.props;
     if (isFavorite) {
       return 'icon-heart text-danger';
     }
     return 'icon-heart';
-  }
+  };
 
   update = () => {
     this.props.onUpdate(this.props.data);
-  }
+  };
 
   remove = () => {
     this.props.onDelete(this.props.data);
-  }
+  };
 
   addToList = () => {
     this.props.onAdd(this.props.data);
-  }
+  };
 
   addFavorite = () => {
     this.props.onSelectFavorite(this.props.data);
-  }
+  };
 
   renderCardFooter = () => {
-    const { isExist } = this.props;
+    const { isExist, isFavorite } = this.props;
     if (isExist) {
       return (
-        <ul className="list-items">
-          <li className="list-items__item">
-            <button onClick={this.addFavorite}>
-              <span className={this.getFavoriteClass()} />
-            </button>
-          </li>
-          <li className="list-items__item">
-            <button onClick={this.update}>
-              <span className="icon-pencil" />
-            </button>
-          </li>
-          <li className="list-items__item">
-            <button onClick={this.remove}>
-              <span className="icon-bin" />
-            </button>
-          </li>
-        </ul>
+        <List>
+          <Item>
+            <IconButton onClick={this.addFavorite}>
+              <Icon isFavorite={isFavorite} name="heart" />
+            </IconButton>
+          </Item>
+          <Item>
+            <IconButton onClick={this.update}>
+              <Icon name="pencil" />
+            </IconButton>
+          </Item>
+          <Item last>
+            <IconButton onClick={this.remove}>
+              <Icon name="bin" />
+            </IconButton>
+          </Item>
+        </List>
       );
     }
     return (
-      <div className="text-center">
-        <Button classes="btn btn-default no-border" style={{ backgroundColor: 'transparent' }} onClick={this.addToList}>
-          <span className="icon-plus" />{' Add to list'}
+      <Center>
+        <Button
+          noBorder
+          style={{ backgroundColor: 'transparent' }}
+          onClick={this.addToList}
+        >
+          <Icon name="plus" />
+          {' Add to list'}
         </Button>
-      </div>
+      </Center>
     );
-  }
+  };
 
   render() {
     const {
-      data: {
-        mediaFile, title, createdAt, description,
-      },
+      data: { mediaFile, title, createdAt, description, className },
     } = this.props;
     return (
-      <div className="card-item">
-        <img className="card-item__head" src={mediaFile} alt={title} />
-        <div className="card-item__body">
-          <h5 className="card-item__title">{title}</h5>
-          <h6 className="card-item__title--meta">{convertTimeStampToDate(createdAt)}</h6>
-          <div className="card-item__text">{description}</div>
-        </div>
-        <div className="card-item__actions">
-          {this.renderCardFooter()}
-        </div>
-      </div>
+      <Main className={className}>
+        <Header src={mediaFile} alt={title} />
+        <Body>
+          <Title>{title}</Title>
+          <Meta>{convertTimeStampToDate(createdAt)}</Meta>
+          <Content>{description}</Content>
+        </Body>
+        <Actions>{this.renderCardFooter()}</Actions>
+      </Main>
     );
   }
 }
@@ -90,6 +108,7 @@ CardItem.propTypes = {
   onAdd: PropTypes.func,
   onSelectFavorite: PropTypes.func,
   isExist: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 CardItem.defaultProps = {
@@ -98,6 +117,7 @@ CardItem.defaultProps = {
   onAdd: () => {},
   onSelectFavorite: () => {},
   isExist: true,
+  isFavorite: false,
 };
 
 export default CardItem;

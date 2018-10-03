@@ -2,7 +2,7 @@
 import React from 'react';
 import { object, func, oneOfType, node, shape } from 'prop-types';
 
-const cleanProps = (props) => {
+const cleanProps = props => {
   const {
     initialState,
     refs,
@@ -107,10 +107,12 @@ class Component extends React.Component {
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (this.props.getSnapshotBeforeUpdate) {
-      return this.props.getSnapshotBeforeUpdate(Object.assign(this.getArgs(), {
-        prevProps: cleanProps(prevProps),
-        prevState,
-      }));
+      return this.props.getSnapshotBeforeUpdate(
+        Object.assign(this.getArgs(), {
+          prevProps: cleanProps(prevProps),
+          prevState,
+        }),
+      );
     }
     return null;
   }

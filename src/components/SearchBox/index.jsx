@@ -7,13 +7,14 @@ import Input from '../From/Input';
 const ENTER_CODE = 13;
 
 class SearchBox extends React.PureComponent {
-  onKeyUp = (event) => {
+  onKeyUp = event => {
+    // eslint-ignore-next-line
     const { values, onSearch } = this.props;
     if (event.keyCode === ENTER_CODE) {
       return onSearch(values);
     }
     return null;
-  }
+  };
 
   render() {
     const { handleChange, values } = this.props;

@@ -1,41 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Main from './button.styled';
+
 class Button extends React.PureComponent {
   static defaultProps = {
+    className: '',
     classes: 'btn-default',
     name: '',
-  }
+  };
 
   render() {
-    const {
-      name,
-      classes,
-      ...restProps
-    } = this.props;
-    const classNames = ['btn', classes].filter(Boolean).join(' ');
+    // eslint-disable-next-line
+    const { name, classes, className, ...restProps } = this.props;
+    const classNames = [className, classes].filter(Boolean).join(' ');
 
     return (
-      <button
+      <Main
         aria-label={name}
         type="button"
-        role="button"
         className={classNames}
         {...restProps}
       >
         {this.props.children}
-      </button>
+      </Main>
     );
   }
 }
 
 Button.propTypes = {
   name: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
   classes: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;

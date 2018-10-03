@@ -3,25 +3,24 @@ const NASA_ENDPOINT = 'https://images-api.nasa.gov';
 
 function searchJob(criteria) {
   return new Promise((resolve, reject) => {
-    fetch(`${NASA_ENDPOINT}/search?q=${criteria}&keywords=${criteria}&title=${criteria}&description=${criteria}`)
-      .then((res) => {
+    fetch(
+      `${NASA_ENDPOINT}/search?q=${criteria}&keywords=${criteria}&title=${criteria}&description=${criteria}`,
+    )
+      .then(res => {
         resolve(res.json());
       })
-      .catch((error) => reject(error));
+      .catch(error => reject(error));
   });
 }
 
 function getMediaAssets(nasaId) {
   return new Promise((resolve, reject) => {
     fetch(`${NASA_ENDPOINT}/asset/${nasaId}`)
-      .then((res) => {
+      .then(res => {
         resolve(res.json());
       })
-      .catch((error) => reject(error));
+      .catch(error => reject(error));
   });
 }
 
-export {
-  searchJob,
-  getMediaAssets,
-};
+export { searchJob, getMediaAssets };

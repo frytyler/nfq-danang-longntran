@@ -7,33 +7,30 @@ class NasaModal extends React.PureComponent {
   static defaultProps = {
     initialOn: false,
     onToggleModal: () => {},
-  }
+  };
 
   static getDerivedStateFromProps(props) {
     return {
       active: props.initialOn,
     };
   }
-  initialState = { active: this.props.initialOn }
-  state = this.initialState
+  initialState = { active: this.props.initialOn };
+  state = this.initialState;
 
   getStateHelper = () => ({
     active: this.state.active,
-  })
+  });
 
   toggleModal = () =>
     this.setState(
       ({ active }) => ({ active: !active }),
       () => this.props.onToggleModal(this.state.active),
-    )
+    );
 
   render() {
     const { active } = this.state;
     return (
-      <Modal
-        isVisible={active}
-        onCloseClicked={this.toggleModal}
-      >
+      <Modal isVisible={active} onCloseClicked={this.toggleModal}>
         {this.props.children(this.getStateHelper())}
       </Modal>
     );

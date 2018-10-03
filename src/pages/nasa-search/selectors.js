@@ -3,14 +3,7 @@ import { context } from './constants';
 
 const getData = state => state.get(context).data;
 const getCriteria = state => state.get(context).criteria;
-const itemsSelector = () => createSelector(
-  getData,
-  getCriteria,
-  items => items,
-);
+const itemsSelector = () =>
+  createSelector(getData, getCriteria, items => items);
 
-export {
-  getData,
-  getCriteria,
-  itemsSelector,
-};
+export { getData, getCriteria, itemsSelector };

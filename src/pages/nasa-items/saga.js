@@ -2,7 +2,11 @@ import { eventChannel } from 'redux-saga';
 import { put, call, takeLatest, take, fork } from 'redux-saga/effects';
 
 import { rsf } from '../../firebase';
-import { loadItemsSuccessfully, NASA_FILTER, nasaFilterAction } from './actions';
+import {
+  loadItemsSuccessfully,
+  NASA_FILTER,
+  nasaFilterAction,
+} from './actions';
 import { REMOVE_ITEM, SAVE_ITEM, UPDATE_ITEM } from './constants';
 import { REQUEST } from '../../utils/constants';
 
@@ -10,7 +14,7 @@ function mapToArray(data) {
   const values = data.value;
   const keys = Object.keys(data.value);
   const jobs = [];
-  keys.map((key) => {
+  keys.map(key => {
     const job = values[key];
     job.key = key;
     jobs.push(job);
@@ -19,11 +23,10 @@ function mapToArray(data) {
 }
 
 function* loadAsyncJob() {
-  yield fork(
-    rsf.database.sync,
-    'jobs',
-    { successActionCreator: loadItemsSuccessfully, transform: mapToArray },
-  );
+  yield fork(rsf.database.sync, 'jobs', {
+    successActionCreator: loadItemsSuccessfully,
+    transform: mapToArray,
+  });
 }
 
 function* uploadMediaFile(mediaFile) {

@@ -7,7 +7,9 @@ import { rsf } from '../../firebase';
 import { getData } from './selectors';
 
 function* searchWorker({ payload: { criteria } }) {
-  const { collection: { items } } = yield call(searchJob, criteria);
+  const {
+    collection: { items },
+  } = yield call(searchJob, criteria);
   if (items.length <= 0) {
     return yield put(nasaSearch.success([]));
   }

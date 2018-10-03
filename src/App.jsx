@@ -24,8 +24,15 @@ function App() {
           <main className="mt-5">
             <div className="container">
               <Switch>
-                <Route exact path="/nasa-items" component={NasaItemsContainer} />
-                <Route path="/nasa-search/:query?" component={NasaSearchContainer} />
+                <Route
+                  exact
+                  path="/nasa-items"
+                  component={NasaItemsContainer}
+                />
+                <Route
+                  path="/nasa-search/:query?"
+                  component={NasaSearchContainer}
+                />
                 <Redirect to="/nasa-items" />
               </Switch>
             </div>

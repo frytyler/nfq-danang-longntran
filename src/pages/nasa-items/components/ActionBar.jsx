@@ -8,7 +8,9 @@ const ActionBar = ({ onOpenModal, onSearch }) => (
   <div className="action-bar">
     <SearchBox onSearch={onSearch} />
     <div className="action-bar__right">
-      <Button classes="btn-primary" onClick={onOpenModal}>Create new item</Button>
+      <Button primary onClick={onOpenModal}>
+        Create new item
+      </Button>
     </div>
   </div>
 );

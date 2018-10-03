@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import CardItem from './CardItem';
 
 const CardList = ({
-  onRemove, items, onUpdate, onAddToList, isExist, onSelectFavorite,
+  onRemove,
+  items,
+  onUpdate,
+  onAddToList,
+  isExist,
+  onSelectFavorite,
 }) => {
   const cardListView = items.map((item, key) => (
     <CardItem
@@ -19,11 +24,7 @@ const CardList = ({
     />
   ));
 
-  return (
-    <div className="card-list">
-      {cardListView}
-    </div>
-  );
+  return <div className="card-list">{cardListView}</div>;
 };
 
 CardList.propTypes = {

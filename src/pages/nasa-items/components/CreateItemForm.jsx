@@ -21,7 +21,9 @@ class CreateItemForm extends React.PureComponent {
     return (
       <form id="save-item-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label className="form-label" htmlFor="title">Title</label>
+          <label className="form-label" htmlFor="title">
+            Title
+          </label>
           <Input
             type="Text"
             name="title"
@@ -30,10 +32,13 @@ class CreateItemForm extends React.PureComponent {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.title && errors.title && <span className="text-danger">{errors.title}</span>}
+          {touched.title &&
+            errors.title && <span className="text-danger">{errors.title}</span>}
         </div>
         <div className="form-group">
-          <label className="form-label" htmlFor="description">Description</label>
+          <label className="form-label" htmlFor="description">
+            Description
+          </label>
           <TextArea
             name="description"
             value={values.description || ''}
@@ -44,17 +49,22 @@ class CreateItemForm extends React.PureComponent {
           />
         </div>
         <div className="form-group">
-          <label className="form-label" htmlFor="mediaFile">Preview</label>
+          <label className="form-label" htmlFor="mediaFile">
+            Preview
+          </label>
           <Input
             type="file"
             name="mediaFile"
-            onChange={(event) => {
+            onChange={event => {
               setFieldValue('mediaFile', event.currentTarget.files[0]);
             }}
             accept="audio/*,video/*,image/*"
             placeholder="Media file"
           />
-          {touched.mediaFile && errors.mediaFile && <span className="text-danger">{errors.mediaFile}</span>}
+          {touched.mediaFile &&
+            errors.mediaFile && (
+              <span className="text-danger">{errors.mediaFile}</span>
+            )}
         </div>
       </form>
     );

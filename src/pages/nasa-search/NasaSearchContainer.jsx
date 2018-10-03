@@ -19,7 +19,9 @@ import CardList from '../../components/Card/CardList';
 
 class NasaSearchContainer extends React.PureComponent {
   componentDidMount() {
-    const { location: { search } } = this.props;
+    const {
+      location: { search },
+    } = this.props;
     if (isEmpty(search)) return;
 
     const querySegment = search.split('query=');
@@ -33,11 +35,11 @@ class NasaSearchContainer extends React.PureComponent {
       search: `?query=${criteria}`,
     });
     this.props.dispatchSearch(criteria);
-  }
+  };
 
-  handleCreateItem = (item) => {
+  handleCreateItem = item => {
     this.props.dispatchCreate(item);
-  }
+  };
 
   render() {
     return (
@@ -56,10 +58,7 @@ class NasaSearchContainer extends React.PureComponent {
 }
 
 NasaSearchContainer.propTypes = {
-  items: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.array,
-  ]).isRequired,
+  items: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]).isRequired,
   dispatchSearch: PropTypes.func.isRequired,
   dispatchCreate: PropTypes.func.isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
@@ -75,7 +74,10 @@ const mapDispatchToProps = dispatch => ({
   dispatchCreate: item => dispatch(createItem(item)),
 });
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 const withReducer = injectReducer({ key: context, reducer });
 const withSaga = injectSaga({ key: context, saga });
 

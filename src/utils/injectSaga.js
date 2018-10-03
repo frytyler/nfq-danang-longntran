@@ -22,8 +22,8 @@ export default ({ key, saga, mode }) => WrappedComponent => {
       store: PropTypes.object.isRequired,
     };
     static displayName = `withSaga(${WrappedComponent.displayName ||
-    WrappedComponent.name ||
-    'Component'})`;
+      WrappedComponent.name ||
+      'Component'})`;
 
     componentWillMount() {
       const { injectSaga } = this.injectors;

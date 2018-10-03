@@ -8,14 +8,9 @@ import createReducer from './reducers';
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
-  const middlewares = [
-    sagaMiddleware,
-    routerMiddleware(history),
-  ];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ];
+  const enhancers = [applyMiddleware(...middlewares)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
@@ -24,9 +19,9 @@ export default function configureStore(initialState = {}, history) {
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Prevent recomputing reducers for `replaceReducer`
-        shouldHotReload: false,
-      })
+          // Prevent recomputing reducers for `replaceReducer`
+          shouldHotReload: false,
+        })
       : compose;
   /* eslint-enable */
 

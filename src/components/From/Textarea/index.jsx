@@ -9,7 +9,7 @@ class TextArea extends React.PureComponent {
     onBlur: () => {},
     onKeyUp: () => {},
     onChange: () => {},
-  }
+  };
 
   render() {
     const {
